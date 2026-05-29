@@ -241,6 +241,17 @@ ExecutorService
 
 ---
 
+# 🧐 Decision Tradeoffs
+
+| Approach  | Thread Safe | Lazy | Use Case                     |
+| --------- | ----------- | ---- | ---------------------------- |
+| Eager     | ✔           | ❌    | Simple always-needed objects |
+| Lazy      | ❌           | ✔    | Basic learning               |
+| DCL       | ✔           | ✔    | Performance-critical         |
+| Bill Pugh | ✔           | ✔    | ✅ Recommended                |
+| Enum      | ✔           | ✔    | Serialization-safe best      |
+
+
 # 🏆 Final Mental Picture
 
 ```text

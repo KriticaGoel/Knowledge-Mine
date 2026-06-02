@@ -11,30 +11,27 @@ Day1: stream() ,  forEach()
 
 Solution : https://github.com/KriticaGoel/JAVA_CORE/blob/main/08-Streams/forEach.java
 
-Day 2: filter()
+Day 2: filter() + forEach
 1. Even numbers
 2. Odd numbers
 3. Greater than 10
 4. Less than 50
 5. Divisible by 3
 
-Day 3: filter + forEach
-1. Print even numbers
-2. Print odd numbers squared
-3. Print numbers >50
+Solution : https://github.com/KriticaGoel/JAVA_CORE/blob/main/08-Streams/filter.java 
 
-Day 4: map()
+Day 3: map()
 1. Multiply by 10
 2. Convert Integer → String
 3. Square every number
 4. Create list of absolute values
 
-Day 5: collect(toList())
+Day 4: collect(toList())
 1. Even number list
 2. Square list
 3. Numbers >100 list
 
-Day 6 : Mix everything
+Day 5 : Mix everything
 1. Even numbers squared
 2. Odd numbers multiplied by 10
 3. Numbers >50 converted to String

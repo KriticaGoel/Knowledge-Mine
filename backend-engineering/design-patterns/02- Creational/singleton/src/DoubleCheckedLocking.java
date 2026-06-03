@@ -1,5 +1,3 @@
-package designPattern.creational.singleton;
-
 public class DoubleCheckedLocking {
     static void main(String[] args) {
         DoubleChecking s1 = DoubleChecking.getInstance();

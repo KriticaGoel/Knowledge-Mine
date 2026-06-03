@@ -1,5 +1,3 @@
-package designPattern.creational.singleton;
-
 public class SingletonDesignPattern {
 
     static void main(String[] args) {

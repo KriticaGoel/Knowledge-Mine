@@ -340,5 +340,3 @@ Lazy Initialization
 In Synchronized method  every call acquire lock and release lock
 
 In Bill Pugh Singleton Design Lock only once during class initialization. Subsequent calls return existing instance without acquiring lock. So better performance.
-
-Code: https://github.com/KriticaGoel/LLD_JAVA/tree/master/src/designPattern/creational/singleton

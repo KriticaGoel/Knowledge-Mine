@@ -1,5 +1,3 @@
-package designPattern.creational.singleton;
-
 public class SynchronisedSingleton {
 
     static void main(String[] args) {

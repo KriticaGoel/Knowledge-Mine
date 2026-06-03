@@ -1,4 +1,3 @@
-package designPattern.creational.singleton;
 
 public class EagerLoading {
     static void main(String[] args) {

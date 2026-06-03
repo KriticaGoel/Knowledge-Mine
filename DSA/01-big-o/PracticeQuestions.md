@@ -310,6 +310,16 @@ for (int i = 1; i < n; i *= 2) {
 }
 ```
 
+A11:
+
+Step 1 : First part  nlogn
+
+Step 2 : Second part logn
+
+Step 3 : Total Execution Time : nlogn + logn 
+
+Step 4 : Time complexity is O(n log n)
+
 Q12. Find Time Complexity
 
 ```java
@@ -319,6 +329,23 @@ for (int i = n; i > 0; i /= 2) {
     }
 }
 ```
+A12:
+
+Step 1 : Outer loop logN
+Step 2: Inner loop depend on outer loop.
+
+        for i = n, j=0,1,2,...n-1 total execution : N times
+                
+        for i = n/2, j=0,1,2,...n/2-1 total execution : N/2 times
+                
+        for i = n/4, j=0,1,2,...n/4-1 total execution : N/4 times
+                
+        for i = n/8, j=0,1,2,...n/8-1 total execution : N/8 times
+        total execution : n + n/2 + n/4 + n/8 + ...(Gp) = 2N
+
+Step 3 : Total Execution Time : 2N
+
+Step 4 : Time Complexity : O(N)
 
 Q13:
 
@@ -330,6 +357,25 @@ for (int i = 1; i <= n; i *= 2) {
 }
 ```
 
+A13: 
+
+Step 1 : Outer loop logN
+
+Step 2: Inner loop depend on outer loop.
+
+        for i = 1, j=1 total execution : 1 time
+                
+        for i = 2, j=1,2 total execution : 2 times
+                
+        for i = 4, j=1,2,3,4 total execution : 4 times
+                
+        for i = 8, j=1,2,...8 total execution : 8 times
+        total execution : 1 + 2 + 4 + 8 + ...(Gp) = 2N
+
+Step 3 : Total Execution Time : 2N
+
+Step 4 : Time Complexity : O(N)
+
 Q14:
 
 ```java
@@ -339,6 +385,25 @@ for (int i = 1; i <= n; i++) {
     }
 }
 ```
+
+A14: 
+
+Step 1 : Outer loop N
+
+Step 2: Inner loop depend on outer loop.
+
+        for i = 1, j=1,2,...n total execution : N times
+                
+        for i = 2, j=2,3,...n total execution : N-1 times
+                
+        for i = 3, j=3,4,...n total execution : N-2 times
+                
+        for i = n, j=n total execution : 1 time
+        total execution : N + (N-1) + (N-2) + ... + 1 = N(N+1)/2
+
+Step 3 : Total Execution Time : N(N+1)/2
+
+Step 4 : Time Complexity : O(N^2)
 
 Q15:
 
@@ -353,6 +418,37 @@ for (int i = 1; i <= n; i++) {
 
 ```
 
+A15:
+
+Step 1: outer loop N
+Step 2: Middle Loop depend on outer loop.
+
+        for i = 1, j=1 total execution : 1 time
+                
+        for i = 2, j=1,2 total execution : 2 times
+                
+        for i = 3, j=1,2,3 total execution : 3 times
+                
+        for i = n, j=1,2,...n total execution : n(n+1)/2 times
+        total execution : 1 + 3 + 6 + ... + n(n+1)/2 = O(n^2)
+
+Step 3: Total execution of i and j is O(n^2)
+
+Step 4: Inner loop depend on middle loop.
+
+        for j=1, k=1 total execution : 1 time
+                
+        for j=2, k=1,2 total execution : 2 times
+                
+        for j=3, k=1,2,3 total execution : 3 times
+                
+        for j=n, k=1,2,...n total execution : n times
+        total execution : 1 + 2 + 3 + ... + n = n(n+1)/2 = O(n^2)
+
+Step 5: Total Execution Time : O(n^2) 
+
+Step 6: Time Complexity : O(n^2)
+
 Q16:
 
 ```java
@@ -364,6 +460,8 @@ for (int i = 1; i <= n; i++) {
     }
 }
 ```
+
+
 
 Q17:
 

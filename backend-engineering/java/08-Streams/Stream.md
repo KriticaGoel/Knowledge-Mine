@@ -8,9 +8,13 @@
         - Creating a Stream from an Array
         - Creating a Stream from an Integer
     - [Intermediate Operations](#2-intermediate-operations)
-        - Filtering, Mapping, Sorting
+        - [Filtering](#filtering)
+        - [Mapping](#mapping)
+        - [Sorting](#sorting)
     - [Terminal Operations](#3-terminal-operations)
-        - Iterating, Reducing, Collecting,
+        - [Iterating](#iterating)
+        - [Reducing ](#reducing)
+        - [Collecting](#collecting)
     - [Examples](#more-examples)
 
 - Multithreading using Java Streams
@@ -116,12 +120,10 @@ List<String> result = fruits.stream()
         .map(String::toUpperCase)
         .collect(Collectors.toList());
 
-System.out.
-
-println(result); // Output: [APPLE]
+System.out.println(result); // Output: [APPLE]
 ```
 
-**Filtering**
+#### Filtering
         
     Which elements should stay
 
@@ -259,7 +261,7 @@ Pipeline 2 is actually slightly cheaper.
 #### Real Production Rule -  Put the most selective filter first ( the condition removes the most records)
 
 
-**Mapping**
+#### Mapping
 
     What should each element become?
 
@@ -290,7 +292,128 @@ Stream<Integer> stream = Stream.of(1, 2, 3, 4, 5);
 Stream<Integer> squares = stream.map(square);
 ```
 
-**Sorting**
+```java
+list.stream().map(num ->{
+            System.out.println(num.getClass().getSimpleName());
+            String str= String.valueOf(num);
+            System.out.println(str.getClass().getSimpleName());
+            return str;
+        }).toList();
+```
+🔥 1. What map() expects
+
+map() is defined as:
+
+<R> Stream<R> map(Function<? super T, ? extends R> mapper)
+
+So it means:
+
+Input: T (your case → Integer)
+
+Output: R (you decide what it becomes)
+
+👉 Whatever you return becomes the new Stream type
+
+🔥 2. Your stream before map
+
+Stream<Integer>
+
+Each element:
+
+num = 1, 2, 3 (Integer)
+
+🔥 3. Inside map (step-by-step)
+
+Step A: input element
+
+num → Integer
+
+So this prints:
+
+System.out.println(num.getClass().getSimpleName());
+
+Output:
+
+Integer
+
+Step B: conversion
+
+String str = String.valueOf(num);
+
+Now:
+
+num (Integer) → "1" (String)
+
+Step C: print new type
+
+System.out.println(str.getClass().getSimpleName());
+
+Output:
+
+String
+
+Step D: return value (IMPORTANT)
+
+return str;
+
+This is the KEY LINE.
+
+🔥 4. Why we return str
+
+Because map() must produce a new stream element.
+
+Without return:
+
+❌ Stream doesn't know what to store next
+
+❌ Transformation is incomplete
+
+❌ Compilation error
+
+With return:
+
+✔ You tell Stream:
+
+“Replace this Integer with this String”
+
+So transformation becomes:
+
+Integer → String
+
+🔥 5. What happens to Stream type
+
+Before map:
+
+Stream<Integer>
+
+After map:
+
+Stream<String>
+
+Because you returned str (String)
+
+
+```java
+List.of(10, 200, 300)
+.stream()
+.map(n -> String.valueOf(n))
+.map(s -> s.length())
+.map(n -> n * 10)
+.map(n -> n + 5)
+.forEach(System.out::println);
+```
+
+| Step    | Transform Data Type               | Transform Element | 
+|---------|-----------------------------------|-------------------|
+| map     | Stream<Integer>  ->Stream<String> | "10","200,"300    |
+| map     | Stream<String> -> Stream<Integer> | 2, 3, 3           |
+| map     | Its same                          | 20, 30,30         |
+| map     | Its same                          | 25, 35, 35        |
+| forEach | Print all elemnents of stream     |                   |
+
+
+
+#### Sorting
 The sorted() method is used to sort elements in a stream. It takes a comparator as an argument and returns a stream that
 contains the elements sorted according to the comparator. For example, let's sort a stream of numbers in ascending
 order:
@@ -326,7 +449,7 @@ are
 forEach(), count(), collect(), reduce(), min(), max(), anyMatch(), allMatch(), and
 noneMatch().
 
-**Iterating**
+#### Iterating
 The forEach() method is used to iterate over the elements in a stream. It takes a consumer as an argument and invokes
 the consumer for each element in the stream. For example, let's iterate over a stream of numbers and print each number:
 
@@ -334,12 +457,10 @@ the consumer for each element in the stream. For example, let's iterate over a s
 Stream<Integer> stream = Stream.of(1, 2, 3, 4, 5);
 stream.
 
-forEach(number ->System.out.
-
-println(number));
+forEach(number ->System.out.println(number));
 ```
 
-**Reducing**
+#### Reducing
 The reduce() method is used to reduce the elements in a stream to a single value. It takes an identity value and a
 binary operator as arguments and returns the result of applying the binary operator to the identity value and the
 elements in the stream. For example, let's find the sum of all the numbers in a stream:
@@ -367,7 +488,7 @@ Stream<Integer> stream = Stream.of(1, 2, 3, 4, 5);
 int sum = stream.reduce(0, add);
 ```
 
-**Collecting**
+#### Collecting
 The collect() method is used to collect the elements in a stream into a collection. It takes a collector as an argument
 and returns the result of applying the collector to the elements in the stream. For example,let's collect the elements
 in a stream into a list:

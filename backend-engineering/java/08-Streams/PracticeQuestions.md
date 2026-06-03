@@ -17,6 +17,7 @@ Day 2: filter() + forEach
 3. Greater than 10
 4. Less than 50
 5. Divisible by 3
+6. Numbers between 15 and 40 (inclusive) and divisible by 5
 
 Solution : https://github.com/KriticaGoel/JAVA_CORE/blob/main/08-Streams/filter.java 
 
@@ -31,7 +32,44 @@ Day 4: collect(toList())
 2. Square list
 3. Numbers >100 list
 
-Day 5 : Mix everything
+Day 5 :Sorting
+1. Sort ascending
+2. Sort descending
+3. Sort strings alphabetically
+4. Sort string reverse order
+5. Sort by string length
+6. Sort by last digit
+7. Sort employees by salary
+8. Sort employees by name
+9. Sort employees by salary descending
+10. Sort by salary, then name
+Rule:
+First salary ascending
+If salary same → sort by name
+11. Sort even first, then odd
+12. Sort by absolute value
+
+Day 6: Reducing
+1. Sum of numbers
+2. Product of numbers
+3. Maximum value
+4. Minimum value
+5. Minimum value
+6. Join with space
+7. Find longest string using reduce
+8. Sum of even numbers only (using reduce)
+9. Count elements using reduce
+10. Sum of squares
+11. Find second highest salary
+12. Build comma-separated string
+13. Find employee with highest salary
+14. Merge two lists using reduce
+
+Day 7 : Mix everything
 1. Even numbers squared
 2. Odd numbers multiplied by 10
 3. Numbers >50 converted to String
+
+Multithreading using Java Streams
+- [Sequential Streams](#sequential-streams)
+- [Parallel Streams](#parallel-streams)

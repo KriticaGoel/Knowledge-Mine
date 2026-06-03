@@ -1,6 +1,7 @@
 there are approx 23 design pattern
 
-Each design pattern state that remove changing code from static code 
+Each design pattern state that 
+remove changing code from static code 
 
 
 What is changing?
@@ -39,10 +40,11 @@ Adapter, Decorator, Facade, Composite, Proxy
 Its states that we want to change the behavior of code without changing structure.
 
 Strategy, State, Observer, Command, Template  
+![OverviewOfDesignpattern.jpeg](diagram/OverviewOfDesignpattern.jpeg)
 
-![OverviewOfDesignpattern.jpeg](../../Images/OverviewOfDesignpattern.jpeg)
-![HideCreationComplexity.jpeg](../../Images/HideCreationComplexity.jpeg)
+![HideCreationComplexity.jpeg](diagram/HideCreationComplexity.jpeg)
 
-![ControlLifecycle.jpeg](../../Images/ControlLifecycle.jpeg)
+![ControlLifecycle.jpeg](diagram/ControlLifecycle.jpeg)
 
-![ComposeObjects.jpeg](../../Images/ComposeObjects.jpeg)
+![ComposeObjects.jpeg](diagram/ComposeObjects.jpeg)
+

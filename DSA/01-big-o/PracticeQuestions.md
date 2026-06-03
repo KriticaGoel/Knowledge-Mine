@@ -313,3 +313,88 @@ for (int i = 1; i < n; i *= 2) {
 Q12. Find Time Complexity
 
 ```java
+for (int i = n; i > 0; i /= 2) {
+    for (int j = 0; j < i; j++) {
+        System.out.println(j);
+    }
+}
+```
+
+Q13:
+
+```java
+for (int i = 1; i <= n; i *= 2) {
+    for (int j = 1; j <= i; j++) {
+        System.out.println(j);
+    }
+}
+```
+
+Q14:
+
+```java
+for (int i = 1; i <= n; i++) {
+    for (int j = i; j <= n; j++) {
+        System.out.println(j);
+    }
+}
+```
+
+Q15:
+
+```java
+for (int i = 1; i <= n; i++) {
+    for (int j = 1; j <= i; j++) {
+        for (int k = 1; k <= j; k++) {
+            System.out.println(k);
+        }
+    }
+}
+
+```
+
+Q16:
+
+```java
+for (int i = 1; i <= n; i++) {
+    for (int j = i; j <= n; j++) {
+        for (int k = 1; k <= j; k++) {
+            System.out.println(k);
+        }
+    }
+}
+```
+
+Q17:
+
+```java
+for (int i = 1; i <= n; i++) {
+    for (int j = 1; j <= i; j *= 2) {
+        System.out.println(j);
+    }
+}
+```
+
+Q18:
+
+```java
+for (int i = 1; i <= n; i++) {
+    for (int j = 1; j <= i; j++) {
+        for (int k = 1; k <= j; k *= 2) {
+            System.out.println(k);
+        }
+    }
+}
+```
+
+Q19:
+
+```java
+for (int i = 1; i <= n; i *= 2) {
+    for (int j = 1; j <= n; j++) {
+        for (int k = 1; k <= j; k *= 2) {
+            System.out.println(k);
+        }
+    }
+}
+```

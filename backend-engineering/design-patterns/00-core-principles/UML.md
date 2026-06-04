@@ -49,6 +49,6 @@ font italic +{abstract} -> abstract method -> createParser(): FileParser {abstra
 
 italic class name -> abstract  class
 
-![Association.png](../../Images/Association.png)
+![Association.png](diagrams/Association.png)
 
 

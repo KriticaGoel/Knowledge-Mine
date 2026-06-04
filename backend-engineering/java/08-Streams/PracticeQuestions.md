@@ -9,8 +9,6 @@ Day1: stream() ,  forEach()
 8. Print only the last digit of each number.
 9. Print whether each number is even or odd.
 
-Solution : https://github.com/KriticaGoel/JAVA_CORE/blob/main/08-Streams/forEach.java
-
 Day 2: filter() + forEach
 1. Even numbers
 2. Odd numbers
@@ -19,23 +17,16 @@ Day 2: filter() + forEach
 5. Divisible by 3
 6. Numbers between 15 and 40 (inclusive) and divisible by 5
 
-Solution : https://github.com/KriticaGoel/JAVA_CORE/blob/main/08-Streams/filter.java 
-
 Day 3: map()
 1. Multiply by 10
 2. Convert Integer → String
 3. Square every number
 4. Create list of absolute values
 
-Day 4: collect(toList())
-1. Even number list
-2. Square list
-3. Numbers >100 list
-
-Day 5 :Sorting
-1. Sort ascending
+Day 4 :Sorting
+1. Sort ascending List<Integer> nums = List.of(5, 1, 9, 3, 7);
 2. Sort descending
-3. Sort strings alphabetically
+3. Sort strings alphabetically List<String> names = List.of("Zara", "Aman", "Bob", "John");
 4. Sort string reverse order
 5. Sort by string length
 6. Sort by last digit
@@ -48,6 +39,11 @@ First salary ascending
 If salary same → sort by name
 11. Sort even first, then odd
 12. Sort by absolute value
+
+Day 5: collect(toList())
+1. Even number list
+2. Square list
+3. Numbers >100 list
 
 Day 6: Reducing
 1. Sum of numbers

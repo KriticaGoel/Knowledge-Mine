@@ -45,6 +45,12 @@ Day 5: collect(toList())
 2. Square list
 3. Numbers >100 list
 
+
+List<String>
+Names starting with A
+Names ending with n
+Names length >5
+
 Day 6: Reducing
 1. Sum of numbers
 2. Product of numbers
@@ -61,10 +67,83 @@ Day 6: Reducing
 13. Find employee with highest salary
 14. Merge two lists using reduce
 
+distinct()
+
+Questions:
+
+1. Remove duplicates
+2. Unique names count
+
+count()
+
+Questions:
+
+1. Names starting A
+2. Names length >5
+
+anyMatch()
+allMatch()
+noneMatch()
+
+1. Any salary >2 lakh
+2. All employees active
+3. None retired
+
+max()
+min()
+average()
+sum()
+
+1. Highest salary
+2. Lowest salary
+3. Average salary
+   
+groupingBy()
+1. Group by department
+2. Group by age
+3. Group by city
+
+
+partitioningBy()
+
+1. Salary >50000
+2. Age >30
+
+flatMap()
+
+1. Get all orders
+2. Get all order IDs
+3. Get all unique products
+
+Nested objects
+2. All employee names
+3. Highest paid employee
+4. Unique departments
+
+
+
 Day 7 : Mix everything
 1. Even numbers squared
 2. Odd numbers multiplied by 10
 3. Numbers >50 converted to String
+4. Pending orders 
+5. Orders by customer 
+6. Revenue by city 
+7. Top 5 orders
+8. Failed transactions 
+9. Total transaction amount
+10. Top customers
+11. Failed requests
+    Average response time
+    Top 10 slow requests
+    Requests grouped by endpoint
+
+
+Custom Collectors
+Collector.of()
+groupingBy + mapping
+groupingBy + reducing
+teeing collector
 
 Multithreading using Java Streams
 - [Sequential Streams](#sequential-streams)

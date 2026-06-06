@@ -11,6 +11,9 @@
         - [Filtering](#filtering)
         - [Mapping](#mapping)
         - [Sorting](#sorting)
+        - [Limit](#limit)
+        - Distinct
+        - Skip
     - [Terminal Operations](#3-terminal-operations)
         - [Iterating](#iterating)
         - [Reducing ](#reducing)
@@ -441,13 +444,123 @@ Stream<Integer> stream = Stream.of(5, 3, 1, 4, 2);
 Stream<Integer> sortedNumbers = stream.sorted(comparator);
 ```
 
+Sorting:
+```java
+List<Integer> nums = List.of(5, 1, 9, 3, 7);
+//Sort ascending
+        nums.stream().sorted().forEach(System.out::println);
+//Sort descending
+        nums.stream().sorted(Comparator.reverseOrder()).forEach(System.out::println);
+```
+
+```java
+List<Integer> nums = List.of(6,4,5,2,3,1);
+nums.stream()
+    .sorted(Comparator.comparing(n -> n % 2))
+```
+Lets calculate the key
+
+| Number | n % 2 |
+| ------ | ----- |
+| 6      | 0     |
+| 4      | 0     |
+| 5      | 1     |
+| 2      | 0     |
+| 3      | 1     |
+| 1      | 1     |
+
+The comparator says
+
+0 first
+
+1 later
+
+Because Java's sort is stable, the relative order of equal keys is preserved.
+
+Even numbers in original order
+
+6,4,2
+
+Odd numbers in original order
+
+5,3,1
+
+Final result
+
+6,4,2,5,3,1
+
+```java
+//Sort even first, then odd
+        System.out.println("------");
+        System.out.println("Sort even first, then odd 2,4,6,1,3,5");
+        List<Integer> numInteger = List.of(1,2,3,4,5,6);
+        numInteger.stream()
+                 .sorted(Comparator.comparing((Integer num)->num%2)
+                         .thenComparing(Integer::intValue))
+                .forEach(System.out::println);
+        System.out.println("------");
+        System.out.println("Sort even first, then odd decreasing 1,3,5,2,4,6");
+        System.out.println("reversed applied on even and odd so odd come first then even");
+        numInteger.stream()
+                .sorted(Comparator.comparing((Integer num)->num%2).reversed().
+                        thenComparing(Integer::intValue))
+                .forEach(System.out::println);
+        System.out.println("------");
+        System.out.println("Sort even first, then odd decreasing 5,3,1,6,4,2");
+        System.out.println("reversed applied on even and odd so odd come first then even");
+        numInteger.stream()
+                .sorted(Comparator.comparing((Integer num)->num%2)
+                        .thenComparing(Integer::intValue).reversed())
+                .forEach(System.out::println);
+        System.out.println("------");
+        System.out.println("Sort even first, then odd decreasing 6,4,2,5,3,1");
+        System.out.println("reversed applied on even and odd so odd come first then even");
+        numInteger.stream()
+                .sorted(Comparator.comparing((Integer num)->num%2)
+                        .thenComparing(Comparator.comparing(Integer::intValue).reversed()))
+                .forEach(System.out::println);
+
+
+
+```
+
+#### Limit
+
+Problem is Get top 3 highest paid employees.
+
+sort will order the salary in decreasing order. but to get only top 3 we need to put limit.
+
+```java
+employes.stream()
+                .sorted(Comparator.comparing(Employee::getSalary).reversed())
+                .limit(3)
+                .forEach(employee ->
+                        System.out.println(employee.getSalary()));
+```
+```
+Employees
+ ↓
+Sort descending salary
+ ↓
+Take first 3
+ ↓
+Print
+
+```
+
+#### Distinct
+
+#### Skip
+
+
 ### 3. Terminal operations
 
 Terminal operations trigger the processing of elements and produce a result or a side effect. They are the final step in
 a stream pipeline. They are eager, which means that they are executed immediately. Some examples of terminal operations
 are
 forEach(), count(), collect(), reduce(), min(), max(), anyMatch(), allMatch(), and
-noneMatch().
+noneMatch() , toList() , findFirst(), findAny()
+
 
 #### Iterating
 The forEach() method is used to iterate over the elements in a stream. It takes a consumer as an argument and invokes
@@ -465,10 +578,24 @@ The reduce() method is used to reduce the elements in a stream to a single value
 binary operator as arguments and returns the result of applying the binary operator to the identity value and the
 elements in the stream. For example, let's find the sum of all the numbers in a stream:
 
+Normal Loop:
 ```java
-Stream<Integer> stream = Stream.of(1, 2, 3, 4, 5);
-int sum = stream.reduce(0, (number1, number2) -> number1 + number2);
+int sum = 0;
+
+for(int n : List.of(1,2,3,4)) {
+    sum = sum + n;
+}
 ```
+```java
+int sum = List.of(1,2,3,4)
+        .stream()
+        .reduce(0, (sum, n) -> sum + n);
+```
+
+Identity? 0
+Accumulator? - sum + currentElement
+
+example: .reduce(0, Integer::sum)
 
 Here, we have created a stream of numbers and found the sum of all the numbers in the stream. The reduce() method takes
 an identity value and a binary operator as arguments. A binary operator is a functional interface that takes two
@@ -521,6 +648,45 @@ Stream<Integer> stream = Stream.of(1, 2, 3, 4, 5);
 Optional<Integer> firstEvenNumber = stream.filter(number -> number % 2 ==
         0).findFirst();
 ```
+#### Max
+problem : Find Highest Paid Employee
+```java
+System.out.println("------ Get highest paid employee");
+        employes.stream().max(Comparator.comparing(Employee::getSalary))
+                .ifPresent(employee ->
+                        System.out.println(employee.getSalary()));
+        Employee highestSalary = employes.stream()
+                .max(Comparator.comparing(Employee::getSalary))
+                .orElse(null);
+        System.out.println(highestSalary);
+```
+
+## which one is better using sort().limit(1) or max()?
+
+Approach 1
+
+```
+stream()
+.sorted(reversed())
+.limit(1)
+```
+
+Approach 2
+
+```
+stream()
+.max(...)
+```
+
+Answer:
+```
+max(...)
+```
+
+Sorting: O(n log n)
+
+Finding max: O(n)
+
 
 ### More Examples
 

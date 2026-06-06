@@ -988,3 +988,90 @@ Map<Boolean, List<Student>> passingFailing =
                 .collect(Collectors.partitioningBy(s -> s.getGrade() >= PASS_THRESHOLD));
 
 ```
+
+
+### Stream pipeline
+
+Stateless operations (filter, map) process one element at a time.
+
+Stateful operations (sorted, distinct) may need to hold elements internally before continuing.
+
+1. Lazy + Element-by-Element (Stateless Intermediate Operations)
+   These process one element at a time and don't need to remember previous elements.
+   ```
+   filter()
+   map()
+   flatMap()
+   peek()
+   mapToInt()
+   mapToLong()
+   mapToDouble()
+   boxed()```
+2. Lazy but Need Multiple/All Elements (Stateful Intermediate Operations)
+   These are still lazy (don't run until a terminal operation), but they need to keep state internally
+    ```
+    sorted
+    distinct
+    limit
+    skip
+    takeWhile
+    dropWhile
+    ```
+
+```java
+List<Integer> nums = List.of(5, 2, 8, 1, 6);
+
+nums.stream()
+    .filter(n -> {
+        System.out.println("Filter1: " + n);
+        return n > 2;
+    })
+    .filter(n -> {
+        System.out.println("Filter2: " + n);
+        return n % 2 == 0;
+    })
+    .map(n -> {
+        System.out.println("Map1: " + n);
+        return n * 10;
+    })
+    .map(n -> {
+        System.out.println("Map2: " + n);
+        return n + 1;
+    })
+    .sorted((a, b) -> {
+        System.out.println("Compare: " + a + "," + b);
+        return a - b;
+    })
+    .forEach(System.out::println);
+```
+
+#### How pipeline executes
+Input List : [5, 2, 8, 1, 6]
+
+| element | filter1 | filter2     | map1          | map2          | Comments                 |
+|---------|---------|-------------|---------------|---------------|--------------------------|
+| 5       | ✅       | ❌           | Not Transform | Not Transform | Stop after filter 2      |
+| 2       | ❌       | Not Checked | Not Transform | Not Transform | stop after filter 1      |
+| 8       | ✅       | ✅           | 80            | 81            | 81 is stored for sorting |
+| 1       | ❌       | Not Checked | Not Transform | Not Transform | stop after filter 1      |
+| 6       | ✅       | ✅           | 60            | 61            | 61 is stored for sorting |
+
+After this stream is Stream<Integer> =[81,61]
+
+Now sorted() is a stateful intermediate operation.
+
+It cannot sort one element at a time.
+
+It first gathers all surviving elements:
+
+Sorted result:
+
+[61, 81]
+
+forEach executes
+
+61
+
+81
+
+

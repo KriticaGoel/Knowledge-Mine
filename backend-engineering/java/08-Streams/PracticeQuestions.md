@@ -1,4 +1,4 @@
-Day1: stream() ,  forEach()
+###  stream() ,  forEach()
 1. List<Integer> nums = List.of(1,2,3,4,5);
 2. Print all numbers
 3. Print square of each number
@@ -9,7 +9,7 @@ Day1: stream() ,  forEach()
 8. Print only the last digit of each number.
 9. Print whether each number is even or odd.
 
-Day 2: filter() + forEach
+### filter() + forEach
 1. Even numbers
 2. Odd numbers
 3. Greater than 10
@@ -17,13 +17,13 @@ Day 2: filter() + forEach
 5. Divisible by 3
 6. Numbers between 15 and 40 (inclusive) and divisible by 5
 
-Day 3: map()
+###  map()
 1. Multiply by 10
 2. Convert Integer → String
 3. Square every number
 4. Create list of absolute values
 
-Day 4 :Sorting
+### Sorting
 1. Sort ascending List<Integer> nums = List.of(5, 1, 9, 3, 7);
 2. Sort descending
 3. Sort strings alphabetically List<String> names = List.of("Zara", "Aman", "Bob", "John");
@@ -40,89 +40,104 @@ If salary same → sort by name
 11. Sort even first, then odd
 12. Sort by absolute value
 
-Day 5: collect(toList())
-1. Even number list
-2. Square list
-3. Numbers >100 list
+### limit() 
+1. top 3 highest paying
+
+### skip()
+1. Second highest salary
+
+### distinct()
+
+1. Remove duplicates List.of(1,2,2,3,3,3,4,4,5)
+2. Unique names count
+
+### count()
+
+1. Names starting A
+2. Names length >5
 
 
-List<String>
-Names starting with A
-Names ending with n
-Names length >5
+### anyMatch()
+### allMatch()
+### noneMatch()
 
-Day 6: Reducing
+1. Any salary >2 lakh
+2. All employees active
+3. None retired
+
+### max()
+### min()
+### average()
+### sum()
+
+1. Highest salary
+2. Lowest salary
+3. Average salary
+
+### Reducing
 1. Sum of numbers
 2. Product of numbers
 3. Maximum value
 4. Minimum value
 5. Minimum value
 6. Join with space
-7. Find longest string using reduce
+7. Find the longest string using reduce
 8. Sum of even numbers only (using reduce)
 9. Count elements using reduce
 10. Sum of squares
-11. Find second highest salary
+11. Find second-highest salary
 12. Build comma-separated string
-13. Find employee with highest salary
+13. Find employee with the highest salary
 14. Merge two lists using reduce
 
-distinct()
+### collect(toList())
+1. Even number list
+2. Square list
+3. Numbers >100 list
+4. Get all employee names into a List.
+5.   Get unique departments.
+6.   Convert employees into Map<id, Employee>.
+7.   Create "A,B,C,D" from names.
+8.   Group employees by department.
+9.  Split employees into salary > 5000 and salary <= 5000.
 
-Questions:
 
-1. Remove duplicates
-2. Unique names count
+### List<String>
+Names starting with A
+Names ending with n
+Names length >5
 
-count()
-
-Questions:
-
-1. Names starting A
-2. Names length >5
-
-anyMatch()
-allMatch()
-noneMatch()
-
-1. Any salary >2 lakh
-2. All employees active
-3. None retired
-
-max()
-min()
-average()
-sum()
-
-1. Highest salary
-2. Lowest salary
-3. Average salary
-   
-groupingBy()
-1. Group by department
+### groupingBy()
+1. Group by department Kritica IT,   Sachin HR,   Neha IT,   Sai HR
 2. Group by age
 3. Group by city
+4. Group by even/odd List<Integer> nums =    List.of(1,2,3,4,5,6,7,8);
+5. Group Strings by Length List<String> words =   List.of("Java","API","Spring","SQL");
+6. Number of employee in each department
+7. Name of employee in each department 
+8. Total Salary in each department
 
 
-partitioningBy()
+
+### partitioningBy()
 
 1. Salary >50000
 2. Age >30
 
-flatMap()
+### flatMap()
 
 1. Get all orders
 2. Get all order IDs
 3. Get all unique products
 
-Nested objects
-2. All employee names
-3. Highest paid employee
-4. Unique departments
+### Nested objects
+1. All employee names
+2. Highest paid employee 
+3. Unique departments
 
 
 
-Day 7 : Mix everything
+### Mix everything
 1. Even numbers squared
 2. Odd numbers multiplied by 10
 3. Numbers >50 converted to String
@@ -139,7 +154,7 @@ Day 7 : Mix everything
     Requests grouped by endpoint
 
 
-Custom Collectors
+### Custom Collectors
 Collector.of()
 groupingBy + mapping
 groupingBy + reducing

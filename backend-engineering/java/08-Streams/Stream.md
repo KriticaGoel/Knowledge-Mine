@@ -639,6 +639,72 @@ Stream<Integer> stream = Stream.of(1, 2, 3, 4, 5);
 Set<Integer> numbers = stream.toSet();
 ```
 
+| Collect                | Return                       | Method                                                           |
+|------------------------|------------------------------|------------------------------------------------------------------|
+| Collect to List        | List                         | .collect(Collectors.toList());                                   |
+| Collect to Set         | Set                          | .collect(Collectors.toSet());                                    |
+| Collect to Map         | Map                          | .collect(Collectors.toMap(key,value));                           |
+| Collect to String      | String                       | .collect(Collectors.joining(","));                               |
+| Count                  | long                         | .collect(Collectors.counting()); or nums.stream().count();       |
+| Average                | Double                       | .collect(Collectors.averagingInt(Integer::intValue));            |
+| Sum                    | Integer                      | .collect(Collectors.summingInt(Integer::intValue));              |
+| Max / Min              | Optional<Integer>            | .collect(Collectors.maxBy(Integer::compareTo));                  |
+| Summary Statistics     | IntSummaryStatistics         | .collect(Collectors.summarizingInt(Integer::intValue));          |
+| Grouping               | Map<String, List<Employee>>  | .collect(Collectors.groupingBy(Employee::getDepartment));        |
+| Partitioning           | Map<Boolean, List<Employee>> | .collect(Collectors.partitioningBy(e -> e.getSalary() > 5000 )); |
+| Custom Collection Type | LinkedList<Integer>          | .collect(Collectors.toCollection(LinkedList::new));              |
+| Custom Collection Type | TreeSet<Integer>             | .collect(Collectors.toCollection(TreeSet::new));                 |
+
+
+
+
+#### Summary Statistics
+```
+IntSummaryStatistics stats =
+    nums.stream()
+        .collect(Collectors.summarizingInt(Integer::intValue));
+        
+stats.getCount();
+stats.getSum();
+stats.getAverage();
+stats.getMin();
+stats.getMax();
+```
+
+
+#### Grouping 
+
+```java
+Map<String, List<Employee>> result =
+    employees.stream()
+             .collect(
+                 Collectors.groupingBy(
+                     Employee::getDepartment
+                 )
+             );
+```
+
+```
+IT      -> [emp1, emp2]
+HR      -> [emp3]
+Finance -> [emp4, emp5]
+```
+
+#### Partition
+```java
+Map<Boolean, List<Employee>> result =
+    employees.stream()
+             .collect(
+                 Collectors.partitioningBy(
+                     e -> e.getSalary() > 5000
+                 )
+             );
+```
+
+```
+true  -> employees > 5000
+false -> employees <= 5000
+```
 **Finding the first element**
 The findFirst() method is used to find the first element in a stream. It returns an Optional that contains the first
 element in the stream. For example, let's find the first even number in a stream of numbers:

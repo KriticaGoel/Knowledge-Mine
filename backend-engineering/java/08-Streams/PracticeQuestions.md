@@ -93,13 +93,13 @@ If salary same → sort by name
 ### collect(toList())
 1. Even number list
 2. Square list
-3. Numbers >100 list
+3. Numbers >10 list
 4. Get all employee names into a List.
-5.   Get unique departments.
-6.   Convert employees into Map<id, Employee>.
-7.   Create "A,B,C,D" from names.
-8.   Group employees by department.
-9.  Split employees into salary > 5000 and salary <= 5000.
+5. Get unique departments.
+6. **Convert employees into Map<id, Employee>.**
+7. Create "A,B,C,D" from names.
+8. **Group employees by department.** 
+9. Split employees into salary > 5000 and salary <= 5000.
 
 
 ### List<String>
@@ -163,3 +163,49 @@ teeing collector
 Multithreading using Java Streams
 - [Sequential Streams](#sequential-streams)
 - [Parallel Streams](#parallel-streams)
+
+
+1. flatMap() ⭐
+
+Most important next topic.
+
+Examples:
+```
+List<List<String>>
+↓
+flatMap()
+↓
+List<String>
+```
+2. reduce()
+
+Examples:
+```
+sum
+product
+max
+min
+longest string
+```
+3. Advanced Collectors
+```
+   counting()
+   summingInt()
+   summingDouble()
+   averagingInt()
+   maxBy()
+   minBy()
+   summarizingInt()
+   ```
+4. Complex Employee Problems
+
+Examples:
+```
+Highest paid employee per department
+Count employees per department
+Department with highest salary
+Duplicate names
+Top 3 salaries
+Second highest salary
+Department → average salary
+```

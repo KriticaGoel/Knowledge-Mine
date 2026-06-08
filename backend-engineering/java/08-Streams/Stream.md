@@ -12,8 +12,8 @@
         - [Mapping](#mapping)
         - [Sorting](#sorting)
         - [Limit](#limit)
-        - Distinct
-        - Skip
+        - [Distinct](#distinct)
+        - [Skip](#skip)
     - [Terminal Operations](#3-terminal-operations)
         - [Iterating](#iterating)
         - [Reducing ](#reducing)

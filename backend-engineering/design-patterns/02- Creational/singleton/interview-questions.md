@@ -68,6 +68,26 @@ To access singleton without object creation.
 </details>
 
 <details>
+<summary>Which Singleton implementation do you prefer?</summary>
+
+If I need a pure Java Singleton, I prefer Bill Pugh Singleton.
+
+Reason:
+- Lazy initialization
+- Thread-safe
+- No synchronization overhead
+- Simpler than DCL
+
+If serialization/reflection protection is important,
+
+I prefer Enum Singleton.
+
+In Spring Boot applications, I usually rely on Spring's
+singleton bean scope rather than implementing Singleton manually.
+
+</details>
+
+<details>
 <summary>Open</summary>
 
 Q1:

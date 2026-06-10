@@ -201,7 +201,7 @@ public class DoubleCheckedLocking {
 }
 
 class DoubleChecking{
-    public static DoubleChecking instance;
+    public static volatile  DoubleChecking instance;
 
     private DoubleChecking(){
         System.out.println("DoubleChecking instance created");
@@ -340,3 +340,6 @@ Lazy Initialization
 In Synchronized method  every call acquire lock and release lock
 
 In Bill Pugh Singleton Design Lock only once during class initialization. Subsequent calls return existing instance without acquiring lock. So better performance.
+
+
+## Enum Singleton

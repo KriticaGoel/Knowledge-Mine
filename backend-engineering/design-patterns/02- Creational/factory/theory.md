@@ -145,7 +145,7 @@ class CsvParser implements Parser{
 ```java
 abstract class ParserCreator{
 
-    abstract Parser createParser();
+    protected abstract Parser createParser();
 
     void process(){
 

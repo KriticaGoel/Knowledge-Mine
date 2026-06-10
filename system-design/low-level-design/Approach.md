@@ -27,6 +27,71 @@ Flow _> Problem statement  -> Requirements Gathering -> Class Diagram -> Schema 
 Companies -> Majorly startups, Cred, Flipkart, Swiggy, Zomato, Zepto
 
 
+### LLD Thinking Framework
+
+Step 1: Identify Actors
+
+**Ask**: Who is using the system?
+
+| System      | Who is using      |
+|-------------|-------------------|
+| Pen         | Writer            |
+|             | Manufacturer      |
+| Parking Lot | Driver            |
+|             | Parking Attendant |
+|             | Admin             |
+| BookMyShow  | User              |
+|             | Theatre           |
+|             | Admin             |
+
+Step 2: Write Use Cases (Important)
+
+Think about actions.
+
+| System      | Use Case        |
+|-------------|-----------------|
+| Pen         | Write           |
+|             | Refill ink      |
+|             | Check ink level |
+| Parking Lot | Park vehicle    |
+|             | Remove vehicle  |
+|             | Generate ticket |
+|             | Calculate fee   |
+
+Step 3: Extract Nouns
+
+Every noun is a candidate class.
+
+Driver parks vehicle in parking slot and receives ticket
+
+Nouns: (These become candidate classes.)
+
+Driver
+
+Vehicle
+
+ParkingSlot
+
+Ticket
+
+ParkingLot
+
+Step 4: Extract Verbs
+
+Verbs become methods.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Problem - Design a Pen
 

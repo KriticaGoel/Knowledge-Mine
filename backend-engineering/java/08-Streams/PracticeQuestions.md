@@ -111,7 +111,7 @@ Names length >5
 1. Group by department Kritica IT,   Sachin HR,   Neha IT,   Sai HR
 2. Group by age
 3. Group by city
-4. Group by even/odd List<Integer> nums =    List.of(1,2,3,4,5,6,7,8);
+4. **Group by even/odd** List<Integer> nums =    List.of(1,2,3,4,5,6,7,8);
 5. Group Strings by Length List<String> words =   List.of("Java","API","Spring","SQL");
 6. Number of employee in each department
 7. Name of employee in each department 
@@ -148,10 +148,10 @@ Names length >5
 8. Failed transactions 
 9. Total transaction amount
 10. Top customers
-11. Failed requests
-    Average response time
-    Top 10 slow requests
-    Requests grouped by endpoint
+11. Failed requests 
+12. Average response time 
+13. Top 10 slow requests 
+14. Requests grouped by endpoint
 
 
 ### Custom Collectors

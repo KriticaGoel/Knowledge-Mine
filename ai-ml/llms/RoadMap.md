@@ -21,6 +21,8 @@
 
 Prompt Engineering
 
+Foundation
+
 ✅ Role
 
 ✅ Context
@@ -33,9 +35,29 @@ Prompt Engineering
 
 ✅ Delimiters
 
+Reliability
+
 ✅ Hallucination Control
 
-✅ JSON Output
+✅ Structured Outputs
+
+✅ JSON Design
+
+✅ Prompt Injection Awareness
+
+Prompting Techniques
+
+✅ Zero-Shot
+
+✅ One-Shot
+
+✅ Few-Shot
+
+✅ Chain of Thought
+
+✅ Self-Critique
+
+Evaluation
 
 ✅ Accuracy
 
@@ -44,3 +66,21 @@ Prompt Engineering
 ✅ Latency
 
 ✅ User Rating
+
+✅ Prompt Evals
+
+✅ A/B Testing
+
+Production
+
+✅ Prompt Versioning
+
+✅ Prompt Optimization
+
+✅ System vs User Prompt
+
+✅ RAG Prompting
+
+✅ Agent Prompting
+
+✅ Context Management

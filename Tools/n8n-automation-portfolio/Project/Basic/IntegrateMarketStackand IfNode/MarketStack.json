@@ -1,0 +1,216 @@
+{
+  "name": "MarketStack",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -176,
+        -64
+      ],
+      "id": "1f13cd8b-0317-4ed0-b6a3-3a01dd6a1750",
+      "name": "When chat message received",
+      "webhookId": "90e8afde-4d88-47b4-9071-552d4a4e1770"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Use market stack tool only for publicly traded stocks.\nInput must be a valid stock ticker.\nIf the user asks about an asset that is not a stock, do not call this tool.\n {{ $json.chatInput }}\nAlways return JSON.\n{\n  \"status\":\"success\",\n  \"assetType\":\"stock\",\n  \"ticker\":\"AAPL\",\n  \"message\":\"...\"\n}\n\nIf unsupported:\n\n{\n  \"status\":\"unsupported\",\n  \"assetType\":\"commodity\",\n  \"message\":\"Gold isn't supported\"\n}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        32,
+        -64
+      ],
+      "id": "16656671-564f-42a9-aa96-4152e482f19b",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-oss-20b:free",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        -112,
+        144
+      ],
+      "id": "c077b8a2-8803-4a87-84ba-3b581d6f3576",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "cRzUQ7hA9fbw83rk",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "symbols": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Ticker', ``, 'string') }}",
+        "filters": {
+          "latest": true
+        }
+      },
+      "type": "n8n-nodes-base.marketstackTool",
+      "typeVersion": 1,
+      "position": [
+        192,
+        144
+      ],
+      "id": "b2a737bc-a928-4cc5-848d-ddc8373e6b5c",
+      "name": "Get many EoD data in Marketstack",
+      "credentials": {
+        "marketstackApi": {
+          "id": "0Hi50q5JqA9VwKrF",
+          "name": "Marketstack account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        48,
+        144
+      ],
+      "id": "6d59c252-ae51-4812-a629-022d919f27ff",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $json.output;\n\nconst cleaned = raw\n  .replace(/```json\\s*/i, \"\")\n  .replace(/```/g, \"\")\n  .trim();\n\nconst data = JSON.parse(cleaned);\n\nreturn [\n  {\n    json: data\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        384,
+        -64
+      ],
+      "id": "b2b6f524-6eed-428e-8f72-6c3a1348de51",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "3f6fe831-e692-40a5-af07-8b5c127356fa",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "success",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        592,
+        -64
+      ],
+      "id": "f68b3b21-e64b-40d5-9592-aa69f591d6c1",
+      "name": "If"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many EoD data in Marketstack": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "23a20ec2-2b42-46cc-a41f-1553a66c20de",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0d8345ee045d25b32f9523812003ec1910a51d8e0bccb3550c4c7e028423fbc8"
+  },
+  "nodeGroups": [],
+  "id": "qBCEsuG6MSSeTELz",
+  "tags": []
+}

@@ -191,3 +191,11 @@ Examples
 * Stripe Payment
 * Google Form Submission
 * Telegram Message
+
+
+## Best Practices
+* Store the API key in n8n Credentials or environment variables.
+* Avoid hardcoding secrets in workflows.
+* Validate API responses before processing.
+* Handle empty responses gracefully.
+* Implement retries for temporary API failures.

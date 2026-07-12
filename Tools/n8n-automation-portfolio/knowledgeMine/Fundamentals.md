@@ -199,3 +199,73 @@ Examples
 * Validate API responses before processing.
 * Handle empty responses gracefully.
 * Implement retries for temporary API failures.
+
+## System Message in AI agent
+>The System Message is the highest-priority instruction given to an AI agent. It defines who the AI is, what its role is, how it should behave, what rules it must follow, and what output format it should produce.
+
+Priority
+```
+            Highest Priority
+                      │
+                      ▼
+             System Message
+                      │
+                      ▼
+             Developer Message
+                      │
+                      ▼
+              User Message
+                      │
+                      ▼
+          Conversation History
+                      │
+                      ▼
+                  AI Response
+```
+
+What Can a System Message Control?
+1. AI Role
+   You are a Senior Java Architect.
+2. Personality
+
+    Be professional.     
+    Use concise answers.    
+    Avoid jokes.
+    or    
+    Explain like a teacher.
+3. Output Format
+
+    Always return JSON.  
+    Never use Markdown.  
+   Return only valid JSON.
+4. Rules
+
+    Never guess. 
+
+    If information is missing,
+    
+    say "Insufficient Data".
+5. Constraints
+   
+    Maximum 100 words.
+
+    Use simple English.
+
+    No emojis.
+6. Domain Knowledge
+
+   You are an Oracle Retail expert.
+
+    You understand:
+    
+    OMS
+    
+    RMS
+    
+    SIM
+    
+    Inventory
+    
+    Sales Audit
+
+The AI now answers with domain-specific context.

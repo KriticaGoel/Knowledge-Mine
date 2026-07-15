@@ -1,0 +1,17 @@
+- Design a Scalable Chat Application (WhatsApp/Slack)
+- Design a URL Shortener (Bitly/TinyURL)
+- Design an API Rate Limiter
+- Design a Distributed Cache System
+- Design a Notification System (Email/SMS/Push)
+- Design a Ride-Hailing System (Uber/Ola)
+- Design a Video Streaming Platform (YouTube/Netflix)
+- Design a Payment Gateway (Stripe/Razorpay)
+- Design a News Feed System
+- Design a Search Autocomplete System
+- Design a Logging & Monitoring System
+- Design a File Storage System (Google Drive)
+- Design an E-commerce Checkout System
+- Design a Leaderboard System
+- Design a Distributed Job Scheduler
+- Design a Feature Flag System
+- Design a Metrics & Analytics Platform

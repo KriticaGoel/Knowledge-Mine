@@ -1,0 +1,89 @@
+Java virtual machine is a abstract computing machine which read instruction set in form of java bytecode
+
+JVM manipulates the memory at run time and provides runtime environment to execute the java bytecode.
+
+Core responsibilities of JVM are:
+1. Loading and Interpreting JAVA bytecode
+2. Security
+3. Automatic memory management (Garbage Collection)
+
+### Java Instance
+Java Instance is created by JVM. It is a runtime instance of JVM. It is created when we run the java program. It is responsible for executing the java bytecode.
+
+java Hello command is used to run the java Hello program. It creates a new instance of JVM and executes the bytecode in memory.
+
+As soon as we wrote java Hello command, 
+1. JVM new instance is created in memory and JVM also get a chuck of memory called runtime data areas.
+2. It loads the bytecode (Hello.class) in memory
+3. Executes the program. 
+4. Once the program execution is completed, JVM instance is destroyed and memory is released. (Automatically)
+ 
+If we want to run another program say HelloWorld.class, java HelloWorld command. 
+1. It will create a new instance of JVM and execute the bytecode in memory.
+
+Means multiple instances of JVM can be created to run multiple Java programs at same time.
+
+Each instance of JVM is independent and has its own memory space.
+
+### Java Architecture
+    
+    Hello.java -> Compilation -> Hello.class
+                ┌────────────────────────────────────────────────────────────────────────────────────────────┐
+                │  ┌──────────────┐    ┌──────────────┐  ┌─────────────────────────────────────────────┐     │
+                │  │   Method     │    │    Heap      │  │ ┌─────────┐    ┌────────┐    ┌────────┐     │     │
+                │  │    Area      │    └──────────────┘  │ │   JVM   │    │   PC   │    │ Native │     │     │
+                │  └──────────────┘                      │ │  stack  │    └────────┘    │ Method │     │     │
+                │                                        │ └─────────┘                  │ Stack  │     │     │
+                │                                        │                              └────────┘     │     │
+                │                                        │                                per thread   │     │
+                │                                        └─────────────────────────────────────────────┘     │
+                │   runtime data areas(JVM memory)                                                           │
+                └─────────────▲─────────────────────────▲───────────────────────────────────────▲────────────┘
+                              │                         │                                       │                                       
+                ┌─────────────│─────────────────────────│──────────────────────┐                │
+                │     ┌───────▼──────────┐              │                      │          ┌─────▼───────┐
+                │     │    Class Loader  │      ┌───────▼─────────────┐        │          │ Native      │
+    Hello.class-|---->├──────────────────┤      │ ┌────────────────┐  │ <------│--------->│ Method      │
+                │     │                  │      │ │ JIT Compiler   │  │        │          │ Interface   │
+                │     │Bytecode Verifier │      │ └────────────────┘  │        │          └─────▲───────┘
+                │     │                  │      │ ┌────────────────┐  │        │                │
+                │     └──────────────────┘      │ │ Interpreter    │  │        │                │
+                │              │                │ └────────────────┘  │        │          ┌─────▼───────┐
+                │              ▼                │  Execution Engine   │        │          │ Native      │                                                                                            
+     java Hello │        Instructions    -->    │                     │        │          │ Method      │  
+                │         to execute            └─────────────────────┘        │          │ Libraries   │
+                │                                                              │          └─────────────┘
+                │                                   Security Manager           │
+                │   JVM                             Garbage Collector          │
+                └──────────────────────────────────────────────────────────────┘
+
+Class loader locate Hello.class and load to memory.
+
+There are three types of class loader
+1. Bootstrap class loader - load system files
+2. Platform class Loader - load platform files
+3. Application class loader - load application file
+
+Bytecode Verifier checks the bytecode for security and correctness
+
+### JIT compiler - 
+1. Interpreter read the bytecode and convert to machine code for every call.
+2. JVM monitor frequently executed bytecode and frequently executed bytecode called hot spots 
+3. Hot spots are given to JIT compiler (part of JVM)
+4. JIT compiler converts the hot spots to machine code and this machine code is cached. 
+5. Next time when the hot spot needs to be executed; corresponding cached machine code executed directly which is much faster execution than executing bytecode via interpreter. 
+6. Rest of the code is still interpreted by interpreter 
+7. This is also called Dynamic compilation
+
+### Lifetime of Type
+
+Hello.class -> Class Loader -> Well Formed? ----> N (reject)
+                                    |
+                                    | Y
+                                    ▼   
+                    Allocate space for Static Variables
+
+1. Hello.class is loaded to memory using JVM and check whether class os wel formed or not?
+2. If not the reject the class 
+3. if class pass the check, JVM allocate space for a static variables
+

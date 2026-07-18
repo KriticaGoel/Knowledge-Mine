@@ -261,9 +261,28 @@ Start Time or End Time
 
 ### Pattern 2: Activity Selection
 
-* Choose maximum activities.
+Examples
+* Activities
+* Meetings
+* Events
+* Intervals
+* Schedules
 
-Sort by - Finish Time
+and the question asks:
+
+* Maximum number selected
+* Minimum removed
+* No overlap
+
+```
+Sort by Finish Time
+↓
+Pick Earliest Finish
+↓
+Skip Overlapping
+↓
+Repeat
+```
 
 ### Pattern 3: Scheduling
 

@@ -219,3 +219,94 @@ Global Optimum is 3+3 =6
 Greedy fail again
 
 Final Decision - Greedy algo will not work here
+
+
+
+## Time complexity
+
+Sorting  -> O(n log n)
+
+Traversal -> O(n)
+
+Total -> O(n log n)
+
+## Template
+
+```java
+sort(data);
+
+for(each item){
+
+    if(canTake(item)){
+        take(item);
+    }
+
+}
+```
+
+## Patterns
+
+### Pattern 1: Interval Problems
+
+Examples
+
+* Merge Intervals
+* Non-overlapping Intervals
+* Meeting Rooms
+* Insert Interval
+
+Usually sort by
+
+Start Time or End Time
+
+### Pattern 2: Activity Selection
+
+* Choose maximum activities.
+
+Sort by - Finish Time
+
+### Pattern 3: Scheduling
+
+Examples
+
+* Job Scheduling
+* CPU Scheduling
+* Task Scheduler
+
+Usually sort by
+
+* Deadline
+* Profit
+* End Time
+
+### Pattern 4: Minimum/Maximum
+
+Examples
+
+* Minimum Platforms
+* Minimum Arrows
+* Maximum Units
+
+Usually
+```
+Sort
+↓
+Pick Best
+↓
+Repeat
+```
+### Pattern 5: Fractional Knapsack
+
+Sort by
+
+Value / Weight
+
+Take highest ratio first.
+
+### Pattern 6: Huffman Coding
+
+Repeatedly combine the two smallest frequencies.
+
+Uses
+
+Priority Queue (Min Heap)

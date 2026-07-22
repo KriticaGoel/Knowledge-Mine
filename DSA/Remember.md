@@ -1,3 +1,5 @@
+The best algorithms are not just correct—they are simple because every variable has one clear, unchanging responsibility.
+
 10⁷ sec ≈ 0.3 year
 
 10<sup>8</sup> iteration takes 1 second

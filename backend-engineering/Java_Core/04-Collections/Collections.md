@@ -1,25 +1,43 @@
-### Agenda
+## Agenda
 
-* [Collections](#collections)
-    * [Common Methods](#common-methods-of-collections)
-* [List](#list)
-    * [Operation of List Interface](#operation-of-list-interface)
-        * [Adding Elements](#1-adding-elements)
-        * [Updating Elements](#2-updating-elements)
-        * [Search Elements](#3-search-elements)
-        * [Removing Elements](#4-removing-elements)
-        * [Accessing Elements](#5-accessing-elements)
-        * [Checking Elements](#6-checking-elements)
-        * [Miscellaneous Method](#7-miscellaneous-method)
+- Intro to Collections
+    - Common Collection Interfaces
+    - List Interface
+    - Queue Interface
+    - Set Interface
+    - Map Interface
 
-    * [Complexity of List Interface in Java](#complexity-of-list-interface-in-java)
-    * [Implementation of List](#implementation-of-list)
-    * [Comparison of List and Set](#comparison-of-list-and-set)
+- Intro to Iterators
+    - Using Iterators
+    - Iterator Methods
 
-![Topics to be covered.png](..%2F..%2F..%2Fresources%2FTopics%20to%20be%20covered.png)
-### Collections
+- Additional Concepts
+    - Using Custom Object as Key with Hashmap etc
 
-![CollectionFramework.png](..%2F..%2F..%2Fresources%2FCollectionFramework.png)
+## Introduction
+
+Java Collections Framework provides a set of interfaces and classes to store and manipulate groups of objects.
+Collections make it easier to work with groups of objects, such as lists, sets, and maps. In this beginner-friendly
+tutorial, we'll explore the basics of Java Collections and how to use iterators to traverse through them.
+![Topics to be covered.png](../../../resources/Topics%20to%20be%20covered.png)
+### 1. Introduction to Java Collections
+
+Java Collections provide a unified architecture for representing and manipulating groups of objects. The Collections
+Framework includes interfaces, implementations, and algorithms that simplify the handling of groups of objects.
+
+[Collection PlayList - Video Tutorial](https://drive.google.com/drive/folders/1lLcfZzmKSa0bq_1--OOya0Xk7-y5A9SN?usp=drive_link)
+
+
+### 2. Common Collection Interfaces
+
+There are several core interfaces in the Collections Framework:
+
+![CollectionFramework.png](../../../resources/CollectionFramework.png)
+
+**Collection:** The root interface for all collections. It represents a group of objects, and its subinterfaces include
+List, Set, and Queue.
+
+
 #### Common methods of Collections:
 
 * **add(E element)** - inserts the specified element to the collection
@@ -43,209 +61,6 @@
   In particular, c1.equals(c2) implies that c1.hashCode()==c2.hashCode().
 * **hashcode()**
 
-### List
-
-* It is an Interface extends Collection interface
-* Ordered Collection: store and access element in a sequential manner
-* Include duplicate elements
-* Full visibility and control over the ordering of elements
-
-#### Operation of List Interface
-
-##### 1. Adding Elements:
-
-* **add(Object)**: Collection — This method is used to add an element at the end of the List.
-* **add(int index, Object o)**: Collection-This method is used to add an element at a specific index in the List
-* **addAll(Collection c)**: Collection — This method is used to add a collection of elements at the end of the List.
-* **addAll(int index,Collection c)**: Collection-This method is used to add a collection of elements at a specific
-  index in the List
-* **addFirst()**: List- Add element at 0 index
-* **addLast()**: List- Add element at last index
-
-##### 2. Updating Elements:
-
-* **E set(int index, E element)**: List-**Override element** at particular index and return a previous element of
-  that index
-
-##### 3. Search Elements:
-
-* **indexOf(element)**: List-Returns the index of the **first occurrence** of the specified element in the list, or -1
-  if the element is not found
-* **lastIndexOf(element)**: List-Returns the index of the **last occurrence** of the specified element in the list, or
-  -1 if the element is not found
-
-##### 4. Removing Elements:
-
-* **remove(Object)**: Collection-This method is used to simply remove an object from the List. If there are multiple
-  such objects, then the **first occurrence of the object is removed**.
-* **remove(int index)**: List-Since a List is indexed, this method takes an integer value which simply removes the
-  element present at that specific index in the List. After removing the element, all the elements are moved to the
-  left to fill the space and the indices of the objects are updated.
-* **removeFirst**: List-Remove 0 index from the list
-* **removeLast**: List-Remove last element from the list
-* **clear**: Collection - Remove all elements of a list
-
-##### 5. Accessing Elements:
-
-* **get(int index)**: List-This method returns the element at the specified index in the list.
-* **getFirst**: List — Get first element of list
-* **getLast**: List —Get lat element of the list
-
-##### 6. Checking Elements:
-
-* **contains(Object)**: This method takes a single parameter, the object to be checked if it is present in the list.
-
-##### 7. Miscellaneous Method:
-
-* **reversed()** -Return a reverse-ordered view of this collection
-* **of(E e1,E e2)** -Returns an unmodifiable list containing n elements. List<Integer> integers = List.of(1, 2, 3, 4,
-  5, 6);
-  *** replaceAll**:
-* **subList(int startIndex, int endIndex)**: -integers.subList(3,6)
-* sort(Comparator<? super E> c)
-* replaceAll(UnaryOperator<E> operator)
-* listIterator
-
-#### Complexity of List Interface in Java
-
-| **Operation**                      | **Time <br/>Complexity** | **Space <br/>Complexity** |
-|------------------------------------|--------------------------|---------------------------|
-| Adding Element in List Interface   | O(1)                     | O(1)                      |                           
-| Remove Element from List Interface | O(N)                     | O(N)                      |
-| Replace Element in List Interface  | O(N)                     | O(N)                      |
-| Traversing List Interface          | O(N)                     | O(N)                      |
-
-#### Implementation of List
-
-```java
-public class ListClass {
-
-    public static void main(String[] args) {
-
-        List<Integer> listInteger1 = new ArrayList<>();
-        listInteger1.add(1);
-        listInteger1.add(3);
-        listInteger1.add(4);
-
-
-        List<Integer> listInteger = new ArrayList<>();
-        listInteger.add(10);
-        listInteger.add(30);
-        listInteger.add(40);
-        listInteger.add(1, 20);
-        listInteger.add(4, 10);
-
-
-        listInteger.addAll(new ArrayList<Integer>(listInteger1));
-        listInteger.addAll(2, new ArrayList<Integer>(listInteger1));
-
-        Integer abc = listInteger.set(1, 20);//override previous element and return it
-        System.out.println("Old value at index 1 is " + abc);
-
-        listInteger.addFirst(30);
-        listInteger.addLast(100);
-        for (int i = 0; i < listInteger.size(); i++) {
-            System.out.println("Element at index " + i + " is " + listInteger.get(i));
-        }
-        System.out.println("TOTAL SIZE " + listInteger.size());
-        System.out.println("The first occurrence of 10 is at index  " + listInteger.indexOf(10));
-        System.out.println("The last occurrence of 10 is at index  " + listInteger.lastIndexOf(10));
-        System.out.println("Removed element at index 3 is  " + listInteger.remove(3));
-        System.out.println("The first occurrence of 10 is at index  " + listInteger.indexOf(10));
-        System.out.println("The last occurrence of 10 is at index  " + listInteger.lastIndexOf(10));
-        System.out.println("Remove element 10 first occurrence " + listInteger.remove((Integer) 10));
-        System.out.println("0th element of the list " + listInteger.getFirst());
-        System.out.println("Last element of the list " + listInteger.getLast());
-
-        for (int i = 0; i < listInteger.size(); i++) {
-            System.out.println("Element at index " + i + " is " + listInteger.get(i));
-        }
-        listInteger.clear();
-        for (int i = 0; i < listInteger.size(); i++) {
-            System.out.println(listInteger.get(i));
-        }
-        List<Integer> integers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
-        System.out.println(integers.subList(3, 6));
-        System.out.println(integers.reversed());
-        System.out.println(List.of(1, 2, 3, 4, 5, 6));
-
-        UnaryOperator<Integer> operator = x -> x * 2;
-        System.out.println(operator.apply(8));
-
-    }
-}
-```
-
-#### Comparison of List and Set
-
-| List                                 | Set                                        |
-|--------------------------------------|--------------------------------------------|
-| Ordered sequence                     | Unordered sequence                         |
-| Allows duplicate elements            | Doesn’t allow duplicate elements.          |
-| Element access by position           | Position access to elements is not allowed |
-| Multiple null elements can be stored | Only once null value can stored            |
-
-### ArrayList-
-
-    Dynamic arrays-The size of an ArrayList is increased automatically if the collection grows or shrinks if the objects are removed from the collection
-
-### Vector
-
-    Dynamic arrays -It is a thread-safe class.This is not recommended being used in a single-threaded environment as it might cause extra overheads
-
-### LinkedList
-
-    LinkedList is class is an implementation of a doubly-linked list data structure
-
-### Stack
-
-    Stack is a class is based on the basic principle of last-in-first-out. This is a legacy class. This inherits from a Vector class. It is also a thread-safe class. This is not recommended being used in a single-threaded environment as it might cause extra overheads. However, to overcome this in Vectors place one can readily use ArrayDeque.
-
-## SET
-
-### HashSet
-
-    HashSet is an inherent implementation of the hash table data structure or Hashing. The objects that we insert into the HashSet do not guarantee to be inserted in the same order. The objects are inserted based on their hash code.
-
-[
-
-## Agenda
-
-- Intro to Collections
-    - Common Collection Interfaces
-    - List Interface
-    - Queue Interface
-    - Set Interface
-    - Map Interface
-
-- Intro to Iterators
-    - Using Iterators
-    - Iterator Methods
-
-- Additonal Concepts
-    - Using Custom Object as Key with Hashmap etc
-
-## Introduction
-
-Java Collections Framework provides a set of interfaces and classes to store and manipulate groups of objects.
-Collections make it easier to work with groups of objects, such as lists, sets, and maps. In this beginner-friendly
-tutorial, we'll explore the basics of Java Collections and how to use iterators to traverse through them.
-
-### 1. Introduction to Java Collections
-
-Java Collections provide a unified architecture for representing and manipulating groups of objects. The Collections
-Framework includes interfaces, implementations, and algorithms that simplify the handling of groups of objects.
-
-[Collection PlayList - Video Tutorial](https://drive.google.com/drive/folders/1lLcfZzmKSa0bq_1--OOya0Xk7-y5A9SN?usp=drive_link)
-
-### 2. Common Collection Interfaces
-
-There are several core interfaces in the Collections Framework:
-
-![](https://miro.medium.com/v2/resize:fit:822/1*qgcrVwo8qzF4muOQ-kKB8A.jpeg)
-
-**Collection:** The root interface for all collections. It represents a group of objects, and its subinterfaces include
-List, Set, and Queue.
 
 **List:** An ordered collection that allows duplicate elements. Implementations include ArrayList, LinkedList, and
 Vector.
@@ -257,6 +72,34 @@ Implementations include ArrayDeque, LinkedList, PriorityQueue etc.
 
 **Set:** An unordered collection that does not allow duplicate elements. Implementations include HashSet, LinkedHashSet,
 and TreeSet.
+
+HashSet -
+>HashSet is an inherent implementation of the hash table data structure or Hashing. The objects that we insert into the HashSet do not guarantee to be inserted in the same order. The objects are inserted based on their hash code.
+
+
+* Stores elements in hash table.
+* Unordered
+* Best performance
+
+LinkedHasSet -
+
+* Stores element in HashTable with linked list running through it
+* Ordered (Insertion-order)
+
+TreeSet -
+
+* Stores elememt in red black tree(self balancing tree)
+* Order the item based on value
+* Slower than hashset (logN)
+
+#### Comparison of List and Set
+
+| List                                 | Set                                        |
+|--------------------------------------|--------------------------------------------|
+| Ordered sequence                     | Unordered sequence                         |
+| Allows duplicate elements            | Doesn’t allow duplicate elements.          |
+| Element access by position           | Position access to elements is not allowed |
+| Multiple null elements can be stored | Only once null value can stored            |
 
 **Map:** A collection that maps keys to values. Implementations include HashMap, LinkedHashMap, TreeMap, and Hashtable.
 
@@ -538,82 +381,3 @@ different collection interfaces, implementing classes, and utilizing iterators w
 effectively in your Java applications. Practice and explore the various methods available in the Collections Framework
 to enhance your programming skills.
 
-### List
-
-Arraylist
-LinkedList
-Vector
-
-### Queue
-
-### Set
-
-HashSet -
-
-* Stores elements in hash table.
-* Unordered
-* Best performance
-
-LinkedHasSet -
-
-* Stores element in HashTable with linked list running through it
-* Ordered (Insertion-order)
-
-TreeSet -
-
-* Stores elememt in red black tree(self balancing tree)
-* Order the item based on value
-* Slower than hashset (logN)
-
-### difference-between-comparable-and-comparator
-
-Comparable
-Comparator
-
-1) **Comparable**-Comparable provides a single sorting sequence. In other words, we can sort the collection on the basis
-   of a single element such as id, name, and price.
-
-   **Comparator**-The Comparator provides multiple sorting sequences. In other words, we can sort the collection on the
-   basis of multiple elements such as id, name, and price etc.
-
-2) **Comparable**-Comparable affects the original class, i.e., the actual class is modified.
-
-   **Comparator**-Comparator doesn't affect the original class, i.e., the actual class is not modified.
-
-3) **Comparable**-Comparable provides compareTo() method to sort elements.
-
-   **Comparator**-Comparator provides compare() method to sort elements.
-
-4) **Comparable**-Comparable is present in java.lang package.
-
-   **Comparator**-A Comparator is present in the java.util package.
-
-5) **Comparable**-We can sort the list elements of Comparable type by Collections.sort(List) method.
-
-   **Comparator**-We can sort the list elements of Comparator type by Collections.sort(List, Comparator) method.
-
-```java
-static class Car implements Comparable<Car> {
-    private int speed;
-    private int power;
-    public Car(int speed, int power){
-        this.speed = speed;
-        this.power = power;
-    }
-
-    @Override
-    public String toString() {
-        return "[S=" + this.speed + ", P=" + 
-        this.power + "]";
-    }
-
-    
-
-   
-    public int compareTo(Car a){
-        return this.speed-a.speed;
-    }
-
-    
-}
-```

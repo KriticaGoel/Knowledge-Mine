@@ -167,3 +167,58 @@ employees.forEach(employee -> System.out.println(employee.getSalary() + " " + em
 Previously we apply reversed() to the entire comparator chain
  
 here we apply reversed() only to the name field, so salary is sorted in ascending order and name is sorted in descending order.
+
+
+
+### difference-between-comparable-and-comparator
+
+Comparable
+Comparator
+
+1) **Comparable**-Comparable provides a single sorting sequence. In other words, we can sort the collection on the basis
+   of a single element such as id, name, and price.
+
+   **Comparator**-The Comparator provides multiple sorting sequences. In other words, we can sort the collection on the
+   basis of multiple elements such as id, name, and price etc.
+
+2) **Comparable**-Comparable affects the original class, i.e., the actual class is modified.
+
+   **Comparator**-Comparator doesn't affect the original class, i.e., the actual class is not modified.
+
+3) **Comparable**-Comparable provides compareTo() method to sort elements.
+
+   **Comparator**-Comparator provides compare() method to sort elements.
+
+4) **Comparable**-Comparable is present in java.lang package.
+
+   **Comparator**-A Comparator is present in the java.util package.
+
+5) **Comparable**-We can sort the list elements of Comparable type by Collections.sort(List) method.
+
+   **Comparator**-We can sort the list elements of Comparator type by Collections.sort(List, Comparator) method.
+
+```java
+static class Car implements Comparable<Car> {
+    private int speed;
+    private int power;
+    public Car(int speed, int power){
+        this.speed = speed;
+        this.power = power;
+    }
+
+    @Override
+    public String toString() {
+        return "[S=" + this.speed + ", P=" + 
+        this.power + "]";
+    }
+
+    
+
+   
+    public int compareTo(Car a){
+        return this.speed-a.speed;
+    }
+
+    
+}
+```

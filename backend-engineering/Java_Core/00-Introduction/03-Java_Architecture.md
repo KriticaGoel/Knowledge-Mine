@@ -52,3 +52,36 @@
       │ • Security Manager              │
       └─────────────────────────────────┘
 ```
+
+```
+Source Code
+
+↓
+
+Compiler
+
+↓
+
+Bytecode
+
+↓
+
+Class Loader
+
+↓
+
+Runtime Memory
+
+↓
+
+Execution Engine
+
+↓
+
+Native Method Interface
+
+↓
+
+OS
+
+```

@@ -70,3 +70,69 @@ Each instance of JVM is independent and has its own memory space.
 7. This is also called Dynamic compilation
 
 
+
+```
+12-JVM
+│
+├── README.md
+├── ROADMAP.md
+│
+├── 01-Java-Compilation
+│   ├── Compilation.md
+│   ├── javac.md
+│   └── Bytecode.md
+│
+├── 02-Class-Loading
+│   ├── ClassLoader.md
+│   ├── ParentDelegation.md
+│   ├── Loading.md
+│   ├── Linking.md
+│   ├── Initialization.md
+│   └── CustomClassLoader.md
+│
+├── 03-Runtime-Memory
+│   ├── JVMMemory.md
+│   ├── Heap.md
+│   ├── Stack.md
+│   ├── Metaspace.md
+│   ├── PCRegister.md
+│   ├── NativeMethodStack.md
+│   └── MemoryLeaks.md
+│
+├── 04-Garbage-Collection
+│   ├── GCBasics.md
+│   ├── YoungGeneration.md
+│   ├── OldGeneration.md
+│   ├── G1GC.md
+│   ├── ZGC.md
+│   ├── Shenandoah.md
+│   └── GCLogs.md
+│
+├── 05-JIT
+│   ├── Interpreter.md
+│   ├── C1.md
+│   ├── C2.md
+│   ├── EscapeAnalysis.md
+│   └── Inlining.md
+│
+├── 06-JMM
+│   ├── HappensBefore.md
+│   ├── Volatile.md
+│   ├── synchronized.md
+│   ├── Visibility.md
+│   ├── Atomicity.md
+│   └── Reordering.md
+│
+├── 07-Performance
+│   ├── JVMFlags.md
+│   ├── Profiling.md
+│   ├── HeapDump.md
+│   ├── ThreadDump.md
+│   └── Monitoring.md
+│
+├── InterviewQuestions.md
+└── CheatSheet.md
+
+```
+
+

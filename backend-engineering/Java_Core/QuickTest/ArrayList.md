@@ -641,7 +641,137 @@ It is a **best-effort debugging mechanism**, not a correctness guarantee.
 
 ---
 
-### 21. (Reserved)
+### 21. What is the difference between: new ArrayList()  and  new ArrayList<>(0)
+
+<details>
+<summary>Answer</summary>
+
+The difference is in the first allocation strategy.
+
+new ArrayList() : On the first add(), capacity becomes 10.
+
+new ArrayList<>(0) : Initial capacity is set to 0, and it will grow as elements are added. On the first add(), capacity becomes 1.
+
+</details>
+
+
+### 22. Why does the JDK use Math.max(DEFAULT_CAPACITY, minCapacity) instead of just allocating 10?
+
+<details>
+<summary>Answer</summary>
+
+Because grow() is a generic allocation method. It must guarantee that the new array is at least the requested minimum capacity. For the default constructor, that results in 10 on the first insertion. For other scenarios where a larger minimum capacity is requested, it allocates that larger size instead. Math.max() allows one implementation to satisfy both requirements
+
+</details>
+
+
+### 23. Why use ensureCapacity()
+
+<details>
+<summary>Answer</summary>
+
+When the approximate number of elements is known in advance, ensureCapacity() preallocates the backing array. This reduces repeated reallocations and copies during add(), improving performance for large insertions.
+</details>
+
+
+### 24. Why does ArrayList use Arrays.copyOf() instead of a for loop?
+
+<details>
+<summary>Answer</summary>
+
+Arrays.copyOf() delegates to System.arraycopy(), which is a native JVM method implemented in C/C++. It performs a highly optimized bulk memory copy, often using CPU-specific instructions, making it significantly faster than copying references one by one in Java. It also correctly handles overlapping memory regions.
+
+</details>
+
+
+
+### 25. What happens internally when an ArrayList grows?
+
+<details>
+<summary>Answer</summary>
+
+When the backing array becomes full, ArrayList allocates a larger Object[], typically 1.5× the previous capacity. It then uses Arrays.copyOf(), which internally delegates to System.arraycopy(), to copy only the object references into the new backing array. The actual objects remain at their original heap locations; only the references are copied. Finally, the ArrayList updates its elementData reference to point to the new array, and the old backing array becomes eligible for garbage collection once nothing references it.
+
+</details>
+
+
+### 26. Does remove() decrease the capacity?
+
+<details>
+<summary>Answer</summary>
+
+No. remove() only decreases size. The backing array remains the same size. Capacity is reduced only when trimToSize() is called explicitly.
+
+</details>
+
+### 27. Why doesn't Oracle automatically shrink the backing array?
+
+<details>
+<summary>Answer</summary>
+
+Automatic shrinking would introduce frequent allocations, copying, and garbage collection when a list alternates between growing and shrinking. This capacity thrashing would hurt performance. Instead, the JDK leaves the decision to the developer through trimToSize(), since only the application knows whether the list is expected to grow again.
+
+</details>
+
+
+
+### 28. Does subList() create a deep copy?
+
+<details>
+<summary>Answer</summary>
+
+No. It returns a view backed by the original list. 
+Both share the same backing array. 
+Changes to elements through either view are reflected in the other, 
+as long as there are no structural modifications.
+
+</details>
+
+
+
+### 29. Why does subList() throw ConcurrentModificationException after modifying the parent list?
+
+<details>
+<summary>Answer</summary>
+
+subList() is a view backed by the parent list and maintains an expectedModCount. Structural changes to the parent update its modCount, making the sublist's expected value stale. On the next sublist operation, the mismatch is detected and a ConcurrentModificationException is thrown to prevent operating on an inconsistent view
+
+</details>
+
+
+
+### 30. Can a SubList modify the parent list?
+
+<details>
+<summary>Answer</summary>
+
+Yes. A SubList is a view backed by the parent list. Structural modifications performed through the SubList are propagated to the parent, and both modCount and expectedModCount are updated together. Structural modifications performed directly on the parent invalidate the SubList, causing a ConcurrentModificationException on subsequent access.
+
+</details>
+
+
+### 31. Why does toArray() return a copy instead of the internal backing array?
+
+<details>
+<summary>Answer</summary>
+
+toArray() returns a new array to preserve encapsulation. If the internal elementData array were exposed, callers could modify the ArrayList's contents directly, bypassing its methods and breaking its internal consistency. Returning a copy keeps the internal representation protected.
+
+</details>
+
+
+### 32. Why do we write list.toArray(new String[0]) instead of list.toArray()?
+
+<details>
+<summary>Answer</summary>
+
+toArray() returns an Object[], which requires casting and loses compile-time type safety. The generic overload toArray(T[] a) preserves the component type, allowing the method to return a String[], Employee[], or any other specific array type without manual casting. The zero-length array is primarily used to communicate the desired runtime component type
+
+</details>
+
+
+
+### 33. (Reserved)
 
 <details>
 <summary>Answer</summary>
@@ -651,7 +781,8 @@ _To be added._
 </details>
 
 
-### 22. (Reserved)
+
+### 34. (Reserved)
 
 <details>
 <summary>Answer</summary>

@@ -1,11 +1,46 @@
-What is JVM
+```
+JDK
+│
+├── javac
+├── javadoc
+├── jar
+├── debugger
+└── JRE
+      │
+      ├── JVM
+      └── Java Libraries
+```
 
-What is JRE
+JDK
 
-What is JDK
+For developing Java applications.
 
-Relationship
+Contains:
 
-Diagram
+* Compiler
+* Debugger
+* JRE
+* Build tools
+* 
+JRE
 
-Interview questions
+For running Java applications.
+
+Contains:
+
+* JVM
+* Core Java Libraries
+
+JVM
+
+Responsible for:
+
+* Loading classes
+* Managing memory
+* Executing bytecode
+* Garbage Collection
+* Thread management
+* Exception handling
+* Converting bytecode to machine code
+
+

@@ -5,21 +5,20 @@
 12. Why does each thread require its own PC Register?
 
 
-✅ Why Class Loaders exist
-
-✅ Lazy Class Loading
-
-✅ Bootstrap ClassLoader
-
-✅ Platform ClassLoader
-
-✅ Application ClassLoader
-
-✅ Parent Delegation Model
-
-✅ Class Loading Lifecycle (Loading → Linking → Initialization)
-
-✅ Verification, Preparation, Resolution
-
-✅ Static variable initialization
-
+javac compiles .java → .class (bytecode)
+↓
+ClassLoader (Bootstrap → Platform → Application, parent delegation)
+↓
+Loading → Linking (Verify/Prepare/Resolve) → Initialization
+↓
+Metaspace (class metadata) ready
+↓
+Execution Engine: Interpreter + JIT (hot spots → Code Cache)
+↓
+Java Stack (per-thread frames) drives execution
+↓
+"new" → Heap allocation → default values → constructor → reference in Stack
+↓
+Garbage Collector (GC Roots → reachability → Minor/Major/Full GC, STW)
+↓
+Exceptions: Heap object + stack trace + Exception Table lookup + unwinding

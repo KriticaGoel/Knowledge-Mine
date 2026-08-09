@@ -52,3 +52,59 @@ JVM
 ├── Metaspace
 └── PC Register
 ```
+
+
+```
+String
+  ↓
+Immutable
+
+String literal
+  ↓
+String Pool
+
+new String()
+  ↓
+New String object
+
+intern()
+  ↓
+Pooled/canonical reference
+
+StringBuilder
+  ↓
+Mutable + internal buffer
+
+StringBuffer
+  ↓
+Mutable + synchronized
+
+Primitive → Wrapper
+  ↓
+Autoboxing
+
+Wrapper → Primitive
+  ↓
+Unboxing
+
+Wrapper == Wrapper
+  ↓
+Reference comparison
+
+Wrapper.equals()
+  ↓
+Value comparison
+
+Wrapper + arithmetic
+  ↓
+Unboxing → operation → boxing
+
+null Wrapper → primitive
+  ↓
+NullPointerException
+
+Integer -128 to 127
+  ↓
+Guaranteed cache
+```
+

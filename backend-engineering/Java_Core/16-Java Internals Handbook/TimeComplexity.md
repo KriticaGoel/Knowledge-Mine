@@ -12,23 +12,24 @@
 
 ## trade off
 
-| Feature                | **Array**        | **ArrayList**              | **LinkedList**                                |
-| ---------------------- | ---------------- | -------------------------- | --------------------------------------------- |
-| Size                   | Fixed            | Dynamic                    | Dynamic                                       |
-| Internal structure     | Contiguous array | Resizable contiguous array | Doubly linked nodes                           |
-| Random access `get(i)` | **O(1)**         | **O(1)**                   | **O(n)**                                      |
-| Add at end             | N/A if full      | **O(1) amortized**         | **O(1)**                                      |
-| Add at beginning       | O(n)             | O(n)                       | **O(1)**                                      |
-| Remove at beginning    | O(n)             | O(n)                       | **O(1)**                                      |
-| Remove at end          | O(1)             | **O(1)**                   | **O(1)**                                      |
-| Insert/remove middle   | O(n)             | O(n)                       | **O(n) by index**, O(1) once node known       |
-| Memory overhead        | **Lowest**       | Low                        | **Highest**                                   |
-| Cache locality         | **Excellent**    | **Excellent**              | Poorer                                        |
-| Stores primitives      | **Yes**          | No, uses wrappers          | No, uses wrappers                             |
-| Resize cost            | Cannot resize    | Occasionally copies array  | No array resize                               |
-| `null` values          | Yes              | Yes                        | Yes                                           |
-| Best use               | Fixed-size data  | **General-purpose List**   | Frequent end operations / node-based behavior |
-
+| Feature                | **Array**        | **ArrayList**              | **LinkedList**                                     | **Vector**                           | **Stack**                  |
+|------------------------|------------------|----------------------------|----------------------------------------------------|--------------------------------------|----------------------------|
+| Size                   | Fixed            | Dynamic                    | Dynamic                                            | Dynamic                              | Vector/backing array       |
+| Internal structure     | Contiguous array | Resizable contiguous array | Doubly linked nodes                                | Resizable contiguous array           | Resizable contiguous array |
+| Random access `get(i)` | **O(1)**         | **O(1)**                   | **O(n)**                                           | **O(1)**                             | **O(1)**                   |
+| Add at end             | N/A if full      | **O(1) amortized**         | **O(1)**                                           | **O(1) amortized**                   | **O(1) amortized**         |
+| Add at beginning       | O(n)             | O(n)                       | **O(1)**                                           | O(n)                                 |                            |
+| Remove at beginning    | O(n)             | O(n)                       | **O(1)**                                           | O(n)                                 |                            |
+| Remove at end          | O(1)             | **O(1)**                   | **O(1)**                                           | **O(1)**                             |                            |
+| Insert/remove middle   | O(n)             | O(n)                       | **O(n) by index**, O(1) <br/>once node known       | O(n)                                 |                            |
+| Memory overhead        | **Lowest**       | Low                        | **Highest**                                        |                                      |                            |
+| Cache locality         | **Excellent**    | **Excellent**              | Poorer                                             |                                      |                            |
+| Stores primitives      | **Yes**          | No, uses wrappers          | No, uses wrappers                                  |                                      |                            |
+| Resize cost            | Cannot resize    | Occasionally copies array  | No array resize                                    |                                      |                            |
+| `null` values          | Yes              | Yes                        | Yes                                                |                                      |                            |
+| Best use               | Fixed-size data  | **General-purpose List**   | Frequent end operations <br/>/ node-based behavior |                                      |                            |
+| Capacity               | Fixed-size data  | oldCapacity +oldCapacity/2 | Not Required                                       | if not given double the old capacity |                            |
+| Thread-safe            | ❌                | ❌                          | ❌                                                  | ✅ synchronized  legacy               | ✅ synchronized   legacy    |
 
 1. Array — Trade-off
    [10][20][30][40][50]

@@ -22,3 +22,41 @@ peek()
 ✅ Iterator doesn't guarantee sorted order
 ✅ Custom Comparator
 ✅ Not thread-safe
+
+
+```
+ArrayDeque
+│
+├── Implements → Deque
+│
+├── Internal → Resizable array
+│              Circular-buffer design
+│
+├── Front
+│   ├── addFirst()
+│   ├── offerFirst()
+│   ├── removeFirst()
+│   ├── pollFirst()
+│   └── peekFirst()
+│
+├── Rear
+│   ├── addLast()
+│   ├── offerLast()
+│   ├── removeLast()
+│   ├── pollLast()
+│   └── peekLast()
+│
+├── addFirst/addLast → O(1) amortized
+├── removeFirst/removeLast → O(1)
+│
+├── null → ❌
+├── thread-safe → ❌
+├── sorted → ❌
+├── random access → ❌
+│
+├── Queue → ✅
+├── Stack → ✅
+│
+└── Modern alternative to Stack → ✅
+
+```

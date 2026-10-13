@@ -65,4 +65,3 @@ System Design Topics Covered:
 30. System Essentials
 31. Consistent Hashing
 32. Networking and Communication
-33. Real-World Architectures & Engineering Blogs 

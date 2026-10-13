@@ -18,7 +18,7 @@
 - At most 10 accounts/day from one IP address.
 - At most 5 reward claims/week from one device.
 - 
-![HighLevelRateLimiter.png](resources/HighLevelRateLimiter.png)
+![HighLevelRateLimiter.png](../resources/HighLevelRateLimiter.png)
 
 ## 2. What to do when the limit is exceeded
 
@@ -130,7 +130,7 @@ Advantages:
 - Reduces unnecessary application and downstream work.
 
 **Trade-off:** Gateway rules are centralized and efficient for broad policies; application rules can understand business context better. Many systems use both.
-![middleware Rate Limiter.png](resources/middleware%20Rate%20Limiter.png)
+![middleware Rate Limiter.png](../resources/middleware%20Rate%20Limiter.png)
 
 ### Recommended architecture
 
@@ -192,7 +192,7 @@ Client behavior: read `Retry-After` → wait for the specified interval → retr
 3. If at least one token is available, consume one and allow the request.
 4. Otherwise, reject or apply another configured policy.
 
-![Token Bucket.png](resources/Token%20Bucket.png)
+![Token Bucket.png](../resources/Token%20Bucket.png)
 
 **Pros:** Simple, memory-efficient, permits controlled bursts.
 
@@ -208,7 +208,7 @@ Client behavior: read `Retry-After` → wait for the specified interval → retr
 3. If the queue is full, reject/drop it.
 4. Process dequeued requests at a configured outflow rate.
 
-![LeakyBucket.png](resources/LeakyBucket.png)
+![LeakyBucket.png](../resources/LeakyBucket.png)
 
 **Parameters:** Queue/bucket capacity and outflow rate.
 
@@ -225,12 +225,12 @@ Client behavior: read `Retry-After` → wait for the specified interval → retr
 2. Increment the current window's counter for each request.
 3. Allow up to the limit; reject further requests until the next window.
 
-![FixedWindow.png](resources/FixedWindow.png)
+![FixedWindow.png](../resources/FixedWindow.png)
 
 **Pros:** Simple and memory-efficient.
 
 **Cons:** Boundary problem: traffic just before and after a window boundary can effectively exceed the intended rolling-window rate.
-![ProblemWithFixedWindow.png](resources/ProblemWithFixedWindow.png)
+![ProblemWithFixedWindow.png](../resources/ProblemWithFixedWindow.png)
 
 ### 8.4 Sliding window log
 
@@ -259,7 +259,7 @@ Estimated rolling count
 ```
 
 If 30% of the current window has elapsed, about 70% of the previous window overlaps the rolling minute.
-![SliodingWindowCounter.png](resources/SliodingWindowCounter.png)
+![SliodingWindowCounter.png](../resources/SliodingWindowCounter.png)
 Example: previous count = 5, current count = 3:
 
 ```text
@@ -279,7 +279,7 @@ A relational database is usually a poor choice for a high-volume per-request cou
 An in-memory store such as **Redis** is commonly used because it is fast and supports expiration. Common primitives include:
 - `INCR` — increment a counter.
 - `EXPIRE` — set a key's time-to-live.
-![RedisCounter.png](resources/RedisCounter.png)
+![RedisCounter.png](../resources/RedisCounter.png)
 **Important correctness note:** A separate `INCR` followed by `EXPIRE` can race or leave a key without an expiry if the process fails between operations. Use an atomic script/transaction or a carefully designed key-expiry approach. For strict limits, the check-and-update operation must be atomic.
 
 ## 10. Distributed-environment challenges
@@ -297,7 +297,7 @@ An in-memory store such as **Redis** is commonly used because it is fast and sup
 **Solution:** Use shared state such as Redis, or deliberately partition/allocate quota across instances.
 
 Sticky sessions are not a complete solution: they can fail over, scale poorly, and do not guarantee global enforcement.
-![Synchronization Issue in Rate limiter.png](resources/Synchronization%20Issue%20in%20Rate%20limiter.png)
+![Synchronization Issue in Rate limiter.png](../resources/Synchronization%20Issue%20in%20Rate%20limiter.png)
 
 ### C. Restart and local counters
 

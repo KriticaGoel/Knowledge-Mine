@@ -17,6 +17,8 @@
 - A user can create at most 2 posts/second.
 - At most 10 accounts/day from one IP address.
 - At most 5 reward claims/week from one device.
+- 
+![HighLevelRateLimiter.png](resources/HighLevelRateLimiter.png)
 
 ## 2. What to do when the limit is exceeded
 
@@ -40,15 +42,17 @@
 
 ## 4. Design questions before implementation
 
-- **Who is limited?** IP, user ID, API key, tenant/customer, device, endpoint, or a combination?
-- **What is the scope?** Per user, per endpoint, per tenant, or global?
-- **What is the quota and time window?** Requests/second, minute, day, etc.?
-- **Where is it enforced?** Client SDK, gateway, application code, or separate service?
-- **What is the scale?** Startup or high-volume platform?
-- **Is the system distributed?** Multiple application instances must share quota state if the limit is global.
-- **What happens on rejection?** `429`, `Retry-After`, delay, queue, degradation, or drop?
-- **What is the failure policy?** Fail open, fail closed, or local fallback?
-- **Do clients need to be informed?** Usually yes for API throttling; return a clear status and retry guidance where appropriate.
+| Design Question                              | What to Decide                                                                                |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| **Who is limited?**                          | IP address, user ID, API key, tenant/customer, device, endpoint, or a combination             |
+| **What is the scope?**                       | Per user, per endpoint, per tenant, or globally                                               |
+| **What is the quota and time window?**       | Requests per second, minute, hour, day, etc.                                                  |
+| **Where is it enforced?**                    | Client SDK, API gateway, application code, or dedicated service                               |
+| **What is the scale?**                       | Startup-scale system or high-volume platform                                                  |
+| **Is the system distributed?**               | If multiple application instances share a global limit, how will they coordinate quota state? |
+| **What happens when the limit is exceeded?** | Return `429`, include `Retry-After`, delay, queue, degrade, or drop the request               |
+| **What is the failure policy?**              | Fail open, fail closed, or use a local fallback                                               |
+| **Do clients need to be informed?**          | Return a clear response status and retry guidance where appropriate                           |
 
 ## 5. Requirements
 
@@ -126,7 +130,7 @@ Advantages:
 - Reduces unnecessary application and downstream work.
 
 **Trade-off:** Gateway rules are centralized and efficient for broad policies; application rules can understand business context better. Many systems use both.
-![middleware Rate Limiter.png](../resources/middleware%20Rate%20Limiter.png)
+![middleware Rate Limiter.png](resources/middleware%20Rate%20Limiter.png)
 
 ### Recommended architecture
 
@@ -188,6 +192,8 @@ Client behavior: read `Retry-After` → wait for the specified interval → retr
 3. If at least one token is available, consume one and allow the request.
 4. Otherwise, reject or apply another configured policy.
 
+![Token Bucket.png](resources/Token%20Bucket.png)
+
 **Pros:** Simple, memory-efficient, permits controlled bursts.
 
 **Cons:** Capacity and refill rate need tuning; a burst can still put pressure on downstream systems.
@@ -201,6 +207,8 @@ Client behavior: read `Retry-After` → wait for the specified interval → retr
 2. If the bounded queue has room, enqueue it.
 3. If the queue is full, reject/drop it.
 4. Process dequeued requests at a configured outflow rate.
+
+![LeakyBucket.png](resources/LeakyBucket.png)
 
 **Parameters:** Queue/bucket capacity and outflow rate.
 
@@ -217,9 +225,12 @@ Client behavior: read `Retry-After` → wait for the specified interval → retr
 2. Increment the current window's counter for each request.
 3. Allow up to the limit; reject further requests until the next window.
 
+![FixedWindow.png](resources/FixedWindow.png)
+
 **Pros:** Simple and memory-efficient.
 
 **Cons:** Boundary problem: traffic just before and after a window boundary can effectively exceed the intended rolling-window rate.
+![ProblemWithFixedWindow.png](resources/ProblemWithFixedWindow.png)
 
 ### 8.4 Sliding window log
 
@@ -228,6 +239,8 @@ Client behavior: read `Retry-After` → wait for the specified interval → retr
 2. On a new request, remove timestamps older than the rolling window.
 3. Count remaining timestamps.
 4. If below the limit, add the new timestamp and allow; otherwise reject.
+
+![SlidingWindowLog.png](resources/SlidingWindowLog.png)
 
 **Pros:** Accurate rolling-window enforcement.
 
@@ -246,7 +259,7 @@ Estimated rolling count
 ```
 
 If 30% of the current window has elapsed, about 70% of the previous window overlaps the rolling minute.
-
+![SliodingWindowCounter.png](resources/SliodingWindowCounter.png)
 Example: previous count = 5, current count = 3:
 
 ```text
@@ -266,7 +279,7 @@ A relational database is usually a poor choice for a high-volume per-request cou
 An in-memory store such as **Redis** is commonly used because it is fast and supports expiration. Common primitives include:
 - `INCR` — increment a counter.
 - `EXPIRE` — set a key's time-to-live.
-
+![RedisCounter.png](resources/RedisCounter.png)
 **Important correctness note:** A separate `INCR` followed by `EXPIRE` can race or leave a key without an expiry if the process fails between operations. Use an atomic script/transaction or a carefully designed key-expiry approach. For strict limits, the check-and-update operation must be atomic.
 
 ## 10. Distributed-environment challenges
@@ -284,6 +297,7 @@ An in-memory store such as **Redis** is commonly used because it is fast and sup
 **Solution:** Use shared state such as Redis, or deliberately partition/allocate quota across instances.
 
 Sticky sessions are not a complete solution: they can fail over, scale poorly, and do not guarantee global enforcement.
+![Synchronization Issue in Rate limiter.png](resources/Synchronization%20Issue%20in%20Rate%20limiter.png)
 
 ### C. Restart and local counters
 
@@ -343,44 +357,6 @@ It can be if deployed without suitable resilience. Options include:
 9. **A rate limiter is not a full abuse-prevention system.** Authentication, authorization, fraud controls, concurrency limits, and business validation may also be required.
 10. **Be precise about “leaky bucket.”** Queueing implementations delay work; policing implementations may reject excess traffic.
 
-## 14. Rapid recall — flashcards
-
-**Q: What is a rate limiter?**  
-A: A component that controls request volume per identity/resource over time.
-
-**Q: What HTTP status commonly signals throttling?**  
-A: `429 Too Many Requests`; `Retry-After` can indicate when to retry.
-
-**Q: Is client-side limiting enough for a public API?**  
-A: No. Clients can bypass it; enforce the quota server-side.
-
-**Q: Why use Redis?**  
-A: Fast shared in-memory state, TTL support, and atomic operations/scripts.
-
-**Q: Why can a fixed window be unfair at boundaries?**  
-A: Requests can cluster just before and after the reset, exceeding the intended rolling rate.
-
-**Q: Which algorithm allows controlled bursts?**  
-A: Token bucket, up to the available bucket capacity.
-
-**Q: Which algorithm smooths output through a queue?**  
-A: Leaky bucket (queueing form).
-
-**Q: Which algorithm is exact for a rolling window but memory-intensive?**  
-A: Sliding window log.
-
-**Q: Why can local counters fail in a distributed system?**  
-A: Each instance sees only its own traffic; aggregate allowance can exceed the global quota.
-
-**Q: How do you prevent counter race conditions?**  
-A: Make the quota check/update atomic, e.g., with a Redis Lua script.
-
-**Q: What are the main Redis-outage choices?**  
-A: Fail open, fail closed, or use a bounded local fallback.
-
-**Q: What is the central design trade-off?**  
-A: Strict global accuracy versus latency, availability, and coordination cost.
-
 ---
 
 ## 15. One-minute system-design answer
@@ -390,3 +366,4 @@ A: Strict global accuracy versus latency, availability, and coordination cost.
 ## Final memory hook
 
 **WHO is limited? → HOW MUCH? → OVER WHAT WINDOW? → WHERE enforced? → WHAT algorithm? → WHERE is state? → IS update atomic? → WHAT if state store fails? → HOW does client retry?**
+

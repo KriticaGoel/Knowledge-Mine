@@ -1,3 +1,75 @@
+## System design building blocks
+1. Database
+2. Horizontal vs Vertical scaling
+3. Caching
+4. Distributed Caching
+5. Load Balancing
+6. SQl vs No Sql
+7. Database scaling
+8. Data replication
+9. Data redundancy
+10. Data partitioning
+11. Database sharding
+    * Sharding Definition
+    * Sharding key
+    * Types of sharding
+      * Range based sharding
+         * Pros Cons 
+         * when to use
+         * Real applications
+      * Hash based sharding
+          * Pros Cons
+          * when to use
+      * Directory based Sharding
+          * Pros Cons
+          * when to use
+      * Geo-based Sharing
+          * Pros Cons
+          * when to use
+      * Composite Sharding
+          * Pros Cons
+          * when to use
+    * Sharding Algorithms
+      * Modulo based sharding
+        * Pros Cons
+        * Formulae
+        * Direct modulo sharding
+        * Stable buckets + a mapping table
+      * Range based sharding
+        * Pros Cons
+      * Consistent Hashing
+        * Pros Cons
+        * Formulae
+        * When to use
+      * Optimized Consistent Hashing:
+12. Data consistency
+13. Data Indexing
+14. Proxy server
+15. Websocket
+16. API Gateway
+17. Message Queue
+18. Networking Concepts (HTTP, TCP/IP, DNS)
+    * IP address
+    * IPv4 vs IPv6
+    * Private vs Public IP
+    * Static and Dynamic IP
+    * ICANN
+    * Vertical and Horizontal Scaling
+
+19. Scalability and Performance
+20. Latency and Throughput
+21. Availability and Availability Patterns
+22. Consistency and Consistency Patterns
+23. 
+
+## System Design Architecture
+1. Client-Server Architecture 
+2. Layered Architecture 
+3. Event Driven Architecture 
+4. Monolithic vs Microservices
+5. Serverless Architecture
+6. CQRS & Event Sourcing 
+7. High Availability & Fault Tolerance
 
 𝗦𝘁𝗲𝗽 𝟭: 𝗕𝘂𝗶𝗹𝗱 𝗦𝘁𝗿𝗼𝗻𝗴 𝗙𝘂𝗻𝗱𝗮𝗺𝗲𝗻𝘁𝗮𝗹𝘀
 → Networking Concepts (HTTP, TCP/IP, DNS, Load Balancing)
@@ -11,11 +83,6 @@
 → Replication & Database Sharding
 → Message Queues & Asynchronous Processing
 
-𝗦𝘁𝗲𝗽 𝟯: 𝗨𝗻𝗱𝗲𝗿𝘀𝘁𝗮𝗻𝗱 𝗦𝘆𝘀𝘁𝗲𝗺 𝗔𝗿𝗰𝗵𝗶𝘁𝗲𝗰𝘁𝘂𝗿𝗲
-→ Monolithic vs Microservices
-→ Event-Driven Architectures
-→ CQRS & Event Sourcing
-→ High Availability & Fault Tolerance
 
 𝗦𝘁𝗲𝗽 𝟰: 𝗠𝗮𝘀𝘁𝗲𝗿 𝗗𝗮𝘁𝗮 𝗛𝗮𝗻𝗱𝗹𝗶𝗻𝗴
 → CAP Theorem & Consistency Trade-offs
@@ -32,14 +99,9 @@
 
 
 System Design Topics Covered:
-
-1. Introduction to System Design
-2. Scalability and Performance
-3. Latency and Throughput
-4. Architectural Patterns
-5. Availability and Availability Patterns
+ 
 6. Replication
-7. Consistency and Consistency Patterns
+7. 
 8. CAP Theorem
 9. PACELC Theorem
 10. Database and Storage

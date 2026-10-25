@@ -43,12 +43,11 @@
         * When to use
       * Optimized Consistent Hashing
       * Dynamic Sharding Algorithms
-12. Data Indexing
-13. Proxy server
-14. Websocket
-15. API Gateway
-16. Message Queue
-17. Networking Concepts (HTTP, TCP/IP, DNS)
+12. Proxy server
+13. Websocket
+14. API Gateway
+15. Message Queue
+16. Networking Concepts (HTTP, TCP/IP, DNS)
     * IP address
     * IPv4 vs IPv6
     * Private vs Public IP
@@ -56,14 +55,14 @@
     * ICANN
     * Vertical and Horizontal Scaling
 
-18. Scalability and Performance 
-19. Latency and Throughput 
-20. Availability and Availability Patterns
-21. Consistency and Consistency Patterns
-22. Resiliency
-23. CAP Theorem 
-24. PACELC Theorem
-25. API Design Principles (REST, GraphQL, Authentication, Rate Limiting)
+17. Scalability and Performance 
+18. Latency and Throughput 
+19. Availability and Availability Patterns
+20. Consistency and Consistency Patterns
+21. Resiliency
+22. CAP Theorem 
+23. PACELC Theorem
+24. API Design Principles (REST, GraphQL, Authentication, Rate Limiting)
 
 ## System Design Architecture
 1. Client-Server Architecture 
@@ -104,8 +103,6 @@
 System Design Topics Covered:
  
 6. Replication
-7. 
-8. 
 10. Database and Storage
 11. Relational Databases
 12. Database Isolation Levels
@@ -113,18 +110,11 @@ System Design Topics Covered:
 14. Sharding and Partitioning
 15. Non-Relational Databases
 16. Choosing the Right Database
-17. Caching
-18. Asynchronous Processing
 19. Message Queues (Kafka, RabbitMQ)
-20. Monolithic vs. Microservices Architecture
-21. Event-Driven Architecture
 22. API Gateway and Backend for Frontend (BFF)
 23. REST, GraphQL, and gRPC
 24. Long Polling, WebSockets, Server-Sent Events (SSE)
-25. Design Patterns
-26. Resiliency
-27. Designing for Resiliency
-28. Load Balancers
+25. Design Patterns 
 29. Circuit Breakers
 30. System Essentials
 32. Networking and Communication

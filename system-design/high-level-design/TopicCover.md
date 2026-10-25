@@ -43,13 +43,12 @@
         * When to use
       * Optimized Consistent Hashing
       * Dynamic Sharding Algorithms
-12. Data consistency
-13. Data Indexing
-14. Proxy server
-15. Websocket
-16. API Gateway
-17. Message Queue
-18. Networking Concepts (HTTP, TCP/IP, DNS)
+12. Data Indexing
+13. Proxy server
+14. Websocket
+15. API Gateway
+16. Message Queue
+17. Networking Concepts (HTTP, TCP/IP, DNS)
     * IP address
     * IPv4 vs IPv6
     * Private vs Public IP
@@ -57,11 +56,14 @@
     * ICANN
     * Vertical and Horizontal Scaling
 
-19. Scalability and Performance
-20. Latency and Throughput
-21. Availability and Availability Patterns
-22. Consistency and Consistency Patterns
-23. 
+18. Scalability and Performance 
+19. Latency and Throughput 
+20. Availability and Availability Patterns
+21. Consistency and Consistency Patterns
+22. Resiliency
+23. CAP Theorem 
+24. PACELC Theorem
+25. API Design Principles (REST, GraphQL, Authentication, Rate Limiting)
 
 ## System Design Architecture
 1. Client-Server Architecture 
@@ -103,8 +105,7 @@ System Design Topics Covered:
  
 6. Replication
 7. 
-8. CAP Theorem
-9. PACELC Theorem
+8. 
 10. Database and Storage
 11. Relational Databases
 12. Database Isolation Levels
@@ -126,5 +127,4 @@ System Design Topics Covered:
 28. Load Balancers
 29. Circuit Breakers
 30. System Essentials
-31. Consistent Hashing
 32. Networking and Communication

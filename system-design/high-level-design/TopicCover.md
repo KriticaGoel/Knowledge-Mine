@@ -63,6 +63,7 @@
 22. CAP Theorem 
 23. PACELC Theorem
 24. API Design Principles (REST, GraphQL, Authentication, Rate Limiting)
+25. Rate Limiter
 
 ## System Design Architecture
 1. Client-Server Architecture 

@@ -41,7 +41,8 @@
         * Pros Cons
         * Formulae
         * When to use
-      * Optimized Consistent Hashing:
+      * Optimized Consistent Hashing
+      * Dynamic Sharding Algorithms
 12. Data consistency
 13. Data Indexing
 14. Proxy server

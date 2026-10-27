@@ -2,7 +2,56 @@
 1. Database
 2. Horizontal vs Vertical scaling
 3. Caching
-4. Distributed Caching
+   * Types of caching
+     * Client-side caching
+     * Server-side caching
+     * Distributed caching
+   * Caching techniques
+     * In-memory caching
+     * In-Browser Caching
+     * Distributed Caching
+     * Content Delivery Network (CDN) Caching
+     * Application-Level Caching
+     * Global Caching
+   * Problem in Caching
+     * Cache Miss
+     * Cache Hit
+     * Cache Eviction
+     * Cache Invalidation
+     * Cache Consistency
+   * Caching strategies
+     * Read-through caching
+     * Write-through caching
+     * Write-Around Cache
+     * Write-behind caching
+   * Cache invalidation strategies
+     * Time-based expiration
+     * Event-based invalidation
+     * Manual invalidation
+   * Cache eviction policies
+     * LRU (Least Recently Used)
+     * LFU (Least Frequently Used)
+     * FIFO (First In First Out)
+4. Rate Limiter
+    * Need for Rate Limiter
+    * Deployment Scenarios
+      * Client side - tradeoff
+      * Server side- tradeoff
+      * API Gateway / middleware - tradeoff
+    * Rate Limiter Algorithms
+     * Token Bucket Algorithm - tradeoff
+     * Leaky Bucket Algorithm - tradeoff
+     * Fixed Window Counter Algorithm - tradeoff
+     * Sliding Window Log Algorithm - tradeoff
+     * Sliding Window Counter Algorithm - tradeoff
+   * Distributed-environment challenges
+     * Race condition
+     * Synchronization across instances
+     * Restart and local counters
+   * Redis availability and failure policy
+     * Fail open
+     * Fail closed
+     * Local fallback
 5. Load Balancing
 6. SQl vs No Sql
 7. Database scaling
@@ -59,11 +108,9 @@
 18. Latency and Throughput 
 19. Availability and Availability Patterns
 20. Consistency and Consistency Patterns
-21. Resiliency
-22. CAP Theorem 
-23. PACELC Theorem
-24. API Design Principles (REST, GraphQL, Authentication, Rate Limiting)
-25. Rate Limiter
+21. CAP Theorem 
+22. PACELC Theorem
+23. API Design Principles (REST, GraphQL, Authentication, Rate Limiting)
 
 ## System Design Architecture
 1. Client-Server Architecture 

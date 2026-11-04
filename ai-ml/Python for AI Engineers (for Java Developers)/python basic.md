@@ -83,3 +83,33 @@ a.append(30)
 
 print(a)
 print(b)
+
+
+enumerate() — index and value together
+
+products = ["Laptop", "Mouse", "Keyboard"]
+
+for index, product in enumerate(products):
+    print(index, peoduct)
+
+
+zip() — combine collections
+
+products = ["Laptop", "Mouse", "Keyboard"]
+prices = [50000, 800, 1500]
+
+for product, price in zip(products, prices):
+    print(product, price)
+
+any() and all()
+
+stock = [10, 0, 5]
+
+print(any(quantity == 0 for quantity in stock))
+print(all(quantity > 0 for quantity in stock))
+
+any() is true if at least one condition is true.
+all() is true only if every condition is true.
+
+
+sorted() vs .sort()

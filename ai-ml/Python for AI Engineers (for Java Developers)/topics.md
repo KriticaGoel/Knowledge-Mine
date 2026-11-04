@@ -1,4 +1,4 @@
-1. running python code
+21. running python code
     * terminal
     * script file
 2. variables
@@ -76,4 +76,21 @@ piwer
    * except
    * else
    * finally
+   * raise exception
+   * custom exception
 15. file hamdling
+   * mode
+   * open and close file
+   * read file
+   * writing and apending file
+   *  working with csv and json
+       
+csv.reader()
+csv.DictReader()
+csv.writer()
+csv.DictWriter()
+
+16. mutable and immutable objects
+17. assignment and copy() 
+18. shallow copy vs deep copy
+19. Reassignment and mutation.

@@ -1,17 +1,17 @@
-21. running python code
+1. Running Python code
     * terminal
     * script file
-2. variables
-3. multiassignment
-4. type checking
-5. type conversion
-4. print
+2. Variables
+3. Multi assignment
+4. Type Checking
+5. Type Conversion
+4. Print
    * simple
    * parameter
       * sep 
       * end
       * formator
-5. input function
+5. Input Function
 6. Data type
    * int
    * float
@@ -24,65 +24,81 @@
    * set  {}
    * frozenset
    * None
-7. typecasting
-8. Operators
+7. Operators
    * Arithmetic Operators
       * addition
       * Substraction
-multiplycation
-division
-reminder
-floor division
-piwer
-   * Comparison opertors
+      * multiplication
+      * division
+      * remainder
+      * floor division
+      * power
+   * Comparison Operators
       * equal to ==
-   * Logical operator
-   * assignment operator = += -= /= ×=
-   * membership operator in not in - check if value is present in seq
-   * identity is is not - check if two variables points to same obj
- difference between == and is
-9.Condition
+      * not equal to !=
+      * greater than >
+      * less than <
+      * greater than or equal to >=
+      * less than or equal to <=
+   * Logical Operator
+     * and
+     * or
+     * not
+   * Assignment Operator 
+     * = 
+     * += 
+     * -= 
+     * /= 
+     * ×=
+   * Membership Operator 
+     * in - check if value is present in seq
+     * not in 
+   * identity 
+     * is 
+     * is not - check if two variables points to same obj 
+   * difference between == and is 
+8. Condition
   * if/elif%else
-   * nested condition
+  * nested condition
   * Ternary condition
   * match-case
-10. loop
+9. Loop
   * for
-   * while
-   * break
+  * while
+  * break
   * continue
-* enumerator
-* zip
-11. Collections
+  * enumerator
+  * zip
+10. Collections
    *  list
    *  Tuple
    * set
    * dictionary
 
-12. Functions
-  *  parameter
+11. Functions
+  * parameter
   * argument
   * default parameter
   * multiple return value
-  * lamda funtion
-  * map funtion
-  * filter funtion
+  * lambda function
+  * map function
+  * filter function
   * *args
   * **kwargs
   * recursive function
-13. list comprehension
-14. exception handling
+12. list comprehension
+13. Exception handling
    * try
    * except
    * else
    * finally
    * raise exception
    * custom exception
-15. file hamdling
+14. File Handling
    * mode
    * open and close file
    * read file
-   * writing and apending file
+   * writing and appending file
    *  working with csv and json
        
 csv.reader()
@@ -90,7 +106,7 @@ csv.DictReader()
 csv.writer()
 csv.DictWriter()
 
-16. mutable and immutable objects
-17. assignment and copy() 
-18. shallow copy vs deep copy
-19. Reassignment and mutation.
+15. Mutable and Immutable objects
+16. Assignment and copy() 
+17. Shallow copy vs Deep copy
+18. Reassignment and mutation.

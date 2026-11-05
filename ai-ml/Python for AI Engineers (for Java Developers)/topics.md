@@ -110,3 +110,18 @@ csv.DictWriter()
 16. Assignment and copy() 
 17. Shallow copy vs Deep copy
 18. Reassignment and mutation.
+19. Variable scope (local/global)
+20. Pass by object reference
+21. *args and **kwargs
+22. is vs ==
+23. any() and all()
+24. None vs False
+25. map(), filter()
+26. sorted() and key
+27. Dictionary comprehension
+28. Nested collections
+29. pass statement
+30. Docstrings
+31. Modules and imports
+32. CSV handling
+33. File paths and encoding

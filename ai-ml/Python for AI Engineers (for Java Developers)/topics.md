@@ -51,11 +51,11 @@
      * /= 
      * ×=
    * Membership Operator 
-     * in - check if value is present in seq
+     * in 
      * not in 
    * identity 
      * is 
-     * is not - check if two variables points to same obj 
+     * is not 
    * difference between == and is 
 8. Condition
   * if/elif%else
@@ -100,12 +100,6 @@
    * read file
    * writing and appending file
    *  working with csv and json
-       
-csv.reader()
-csv.DictReader()
-csv.writer()
-csv.DictWriter()
-
 15. Mutable and Immutable objects
 16. Assignment and copy() 
 17. Shallow copy vs Deep copy

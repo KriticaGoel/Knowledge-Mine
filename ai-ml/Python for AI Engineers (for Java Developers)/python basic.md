@@ -1,4 +1,41 @@
-## Arithmetic operators
+
+## Activate python env
+activate D:\Workspace\Python\lib>conda activate venv/
+
+### Multiple assignment
+```
+x, y, z = 1, 2, 3 # tuple unpacking
+a = b = c = 0 # same value to multiple vars
+x, y = y, x # swap without temp variable
+```
+
+### Type Checking
+```
+a= 10
+print(type(a)) # <class 'int'>
+```
+### Type Conversion
+a=10
+int(a)
+
+
+### print
+```
+print("Hello", "World") # Hello World
+print("Hello", "World", sep="| ") # Hello| World
+print("Loading", end="...") # Loading... (no newline)
+print(f"My name is {name}") # f-string (Python 3.6+)
+print("Score: %d" % 95) # old-style formatting
+```
+### Input function
+```
+name = input("Enter your name: ")
+age = int(input("Enter your age: ")) # cast to int
+pi = float(input("Enter pi: ")) # cast to float
+print(f"Hello {name}, you are {age} years old.")
+```
+
+### Arithmetic operators
 These perform mathematical operations.
 
 | Operator | Meaning | Example |
@@ -12,7 +49,7 @@ These perform mathematical operations.
 | **       | Exponentiation | 2 ** 3 |
 
 
-## Comparison operators
+### Comparison operators
 ```
 price = 1000
 print(price > 500)
@@ -22,7 +59,7 @@ print(price != 1000)
 print(price >= 1000)
 print(price <= 1000)
 ```
-## Logical operators
+### Logical operators
 Three important logical operators:
 
 | Operator | Meaning |
@@ -31,7 +68,7 @@ Three important logical operators:
 | or       | At least one condition must be true |
 | not      | Reverses the Boolean value |
 
-## Assignment Operator
+### Assignment Operator
 
 total = 100
 
@@ -40,7 +77,7 @@ total -= 20
 total *= 2
 total /= 2
 
-## Condition statement
+### Condition statement
 ```
 sales = 150000
 
@@ -53,7 +90,7 @@ print("Average performance")
 else:
 print("Poor performance")
 ```
-## Ternary operator
+### Ternary operator
 ```
 stock = 10
 
@@ -61,7 +98,7 @@ status = "Available" if stock > 0 else "Out of stock"
 
 print(status)
 ```
-## List
+### List
 A list stores multiple values in an ordered, mutable collection.
 ```
 products = ["Keyboard", "Mouse", "Monitor"]
@@ -184,9 +221,9 @@ for key, value in product.items():
 |Duplicates|	Yes|	Yes|	No|	Keys unique|
 |Access|	Index|	Index|	No index|	Key|
 
-## Function
+### Function
 
-### Multiple return values
+#### Multiple return values
 ```
 def calculate_sales(price, quantity=1):
     gross = price * quantity
@@ -196,18 +233,67 @@ def calculate_sales(price, quantity=1):
 gross, tax = calculate_sales(1000, 2)
 ```
 
-## Lambda functions
+#### Recursive 
+
+```
+# Factorial
+def factorial(n):
+if n == 0 or n == 1: # base case
+return 1
+return n * factorial(n - 1) # recursive case
+print(factorial(5)) # 120
+```
+
+### Lambda functions
 
 A lambda is a small anonymous function.
 
-```
-calculate_tax = lambda amount: amount * 0.18
 
-print(calculate_tax(1000))
+Regular function
 ```
-180
+def square(x):
+return x ** 2
+```
+Equivalent lambda
+```
+square = lambda x: x ** 2
+print(square(5)) # 25
+```
+Multi-argument lambda
+```
+add = lambda x, y: x + y
+print(add(3, 4)) # 7
+```
+#### map() Function
 
-## List comprehension
+# Syntax: map(function, iterable)
+```
+nums = [1, 2, 3, 4, 5]
+# Using lambda
+squares = list(map(lambda x: x**2, nums))
+print(squares) # [1, 4, 9, 16, 25]
+```
+# map with two iterables
+```
+a = [1, 2, 3]
+b = [10, 20, 30]
+result = list(map(lambda x, y: x + y, a, b))
+print(result) # [11, 22, 33]
+```
+
+#### filter() Function
+Filters elements from an iterable — keeps only those for which the function returns True:
+
+Syntax: filter(function, iterable)
+
+```
+nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# Keep only even numbers
+evens = list(filter(lambda x: x % 2 == 0, nums))
+print(evens) # [2, 4, 6, 8, 10]
+```
+
+### List comprehension
 
 Traditional approach:
 
